@@ -1,29 +1,32 @@
 - Introduction
 
 - Background
-    - Agents
+X    - Agents
     - Maybe? Powergrid
-    - Machine Learning
-    - Reinforcement Learning
-        - DRL
-        - EA
-    - ARL
-    - Optimising Machine Learning
-        - NAS
+X    - Machine Learning
+X        - DRL
+        - ARL
+X        - EA
+X    - Optimising Machine Learning
+X        - Hyperparameter
+X        - NAS
 
 - Related Works
+    - EA in DRL
     - NAS in DRL
 
 - Software Stack
-    - PalaestrAI
-    - Harl
-    - SAC
-    - NEAT
-    - BO
+X    - PalaestrAI
+    - Harl?
+X    - SAC
+X    - NEAT
+X    - BO
 
 - Concept
 
 - Implementation
+
+- Experiment Setup
 
 - Evaluation
 

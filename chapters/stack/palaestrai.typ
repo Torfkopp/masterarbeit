@@ -1,6 +1,6 @@
-https://www.frontiersin.org/journals/energy-research/articles/10.3389/fenrg.2023.1138446/full
+// https://www.frontiersin.org/journals/energy-research/articles/10.3389/fenrg.2023.1138446/full
 
-https://www.researchgate.net/profile/Eric-Veith/publication/375229375_palaestrAI_A_Training_Ground_for_Autonomous_Agents/links/6543c0f2b6233776b7444a69/palaestrAI-A-Training-Ground-for-Autonomous-Agents.pdf
+// https://www.researchgate.net/profile/Eric-Veith/publication/375229375_palaestrAI_A_Training_Ground_for_Autonomous_Agents/links/6543c0f2b6233776b7444a69/palaestrAI-A-Training-Ground-for-Autonomous-Agents.pdf
 
 palaestrAI [SOURCE] is the execution framework. It offers packages to implement or interface to agents, environments, and simulators. The main concern of palaestrAI is the orderly and reproducible execution of experiment runs, orchestrating the different parts of the experiment run, and storing results for later analysis.
 
@@ -20,10 +20,10 @@ In palaestrAI, the SimulationController represents the control flow. It synchron
 
 Finally, palaestrAI provides results storage facilities. Currently, SQLite for smaller and PostgreSQL for larger simulation projects are supported, through SQLalchemy [https://www.sqlalchemy.org/, retrieved: 2023-01-04.]. There is no need to provide a special interface, and agents, etc. do not need to take care of results storage. This is thanks to the messaging bus: Since all relevant data is shared via message passing (e.g, sensor readings, actions, rewards, objective values, etc.), the majordomo broker simply forwards a copy of each message to the results storage. This way, the database contains all relevant data, from the experiment run file through the traces of all phases to the “brain dumps,” i.e, the saved agent policies.
 
-Figure 3 shows an excerpt of the palaestrAI software stack with the packages and classes mentioned until now.
-FIGURE 3
-www.frontiersin.org
+// Figure 3 shows an excerpt of the palaestrAI software stack with the packages and classes mentioned until now.
+// FIGURE 3
+// www.frontiersin.org
 
-FIGURE 3. The palaestrAI core framework.
+// FIGURE 3. The palaestrAI core framework.
 
 arsenAI’s and palaestrAI’s concept of experiment run phases allow for flexibility in offline learning or adversarial learning through autocurricula (Baker et al., 2020). Within a phase, agents can be employed in any combination and any sensor/actuator mapping. Moreover, agents—specifically, brains—can load “brain dumps” from other, compatible agents. This enables both offline learning and autocurricula within an experiment run in distinct phases.

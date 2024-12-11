@@ -1,4 +1,4 @@
-One branch of machine learning is Deep Reinforcement Learning (DRL), which combines deep learning with reinforcement learning in order to enhance the capabilities of the learning algorithm.
+One branch of machine learning is the previously mentioned Deep Reinforcement Learning (DRL), which combines deep learning with reinforcement learning in order to enhance the capabilities of the learning algorithm.
 
 ==== Deep <Deep>
 #figure(image("/images/coloured_neural_network.png", width: 30%), caption: [A basic representation of a neural network @network_image]) <network>
@@ -23,9 +23,8 @@ Around the 2000s, parallel advancements in deep learning, driven by increased co
 
 The integration of deep learning with reinforcement learning began to take shape around 2013, leading to the emergence of DRL. A seminal moment was the introduction of the Deep Q-Network (DQN) by researchers at DeepMind in 2013. DQN combined Q-learning with convolutional neural networks to play Atari games at superhuman levels, demonstrating the potential of DRL. This success spurred a wave of research and applications, leading to more sophisticated DRL algorithms like Deep Deterministic Policy Gradients (DDPG), Asynchronous Advantage Actor-Critic (A3C), and Proximal Policy Optimisation (PPO).
 
-==== Special about DRL
-Deep Reinforcement Learning stands out for several reasons:
-
+==== Abilities of DRL
+Deep Reinforcement Learning stands out for several reasons: \
 Firstly, it is able to handle high-dimensional data; DRL can process and learn from high-dimensional data inputs, such as images and videos, directly from raw pixels, without requiring manual feature engineering. \
 It is also capable of end-to-end learning; DRL frameworks can learn policies directly from input to output in an end-to-end manner. This holistic approach streamlines the process of training agents to perform complex tasks. \
 Scalability is another specialty of DRL; The use of deep neural networks enables DRL to scale to problems with vast state and action spaces, which were previously infeasible with traditional reinforcement learning methods. @arulkumaran2017deep \
