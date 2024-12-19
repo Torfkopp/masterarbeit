@@ -7,7 +7,6 @@ The agents must balance exploration of new strategies and exploitation of known 
 @uther1997adversarial
 
 
-
 // Key aspects of adversarial reinforcement learning include:
 //   1. Multiple agents: At least two agents interact in the environment, typically with opposing goals1
 //   2. Competitive setting: Agents compete against each other, often in a zero-sum game where one agent's gain is the other's loss1

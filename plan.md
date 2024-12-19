@@ -1,4 +1,5 @@
 - Introduction
+X
 
 - Background
 X    - Agents
@@ -17,12 +18,13 @@ X        - NAS
 
 - Software Stack
 X    - PalaestrAI
-    - Harl?
+X    - Harl
 X    - SAC
 X    - NEAT
 X    - BO
 
 - Concept
+X
 
 - Implementation
 
