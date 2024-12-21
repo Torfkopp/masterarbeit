@@ -1,4 +1,4 @@
-ÜBERARBEITEN
+//ÜBERARBEITEN
 
 Adversarial reinforcement learning is an extension of traditional reinforcement learning techniques applied to multi-agent, competitive environments.
 In adversial reinforcement learning, at least two agents interact in an environment with opposing goals, often competing in a zero-sum game where one agent's gain is the other's loss. Both agents (or all agents respectively) learn and adapt their strategies simultaneously as they interact with each other and the environment.

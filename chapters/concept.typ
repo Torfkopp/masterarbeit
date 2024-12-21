@@ -9,7 +9,7 @@ it is not possible to execute a NAS before starting the whole process of palaest
 making it necessary to run the NAS in parallel.
 
 #figure(
-  image("/images/concept1.png", width: 00%),
+  image("/images/_concept1.png", width: 00%),
   caption: [Adding NAS to the palaestrAI cycle],
 ) <Concept>
 
@@ -30,7 +30,7 @@ Three different approaches of NAS were integrated as shown above:
 + Bayesian Optimisation
 
 #figure(
-  image("/images/NEAT.png", width: 00%),
+  image("/images/_NEAT.png", width: 00%),
   caption: [],
 ) <NEAT_app>
 
@@ -44,7 +44,7 @@ Due to the nature of NEAT, the network's weights are also improved throughout ge
 but further improvement with the normal learning process is still possible.
 
 #figure(
-  image("/images/RLNAS.png", width: 00%),
+  image("/images/_RLNAS.png", width: 00%),
   caption: [],
 ) <RL_app>
 
@@ -58,7 +58,7 @@ The search finishes after a set amount of steps;
 afterwards the latest -- and ideally best -- network is run through the normal learning process, where its weights are improved.
 
 #figure(
-  image("/images/BONAS.png", width: 00%),
+  image("/images/_BONAS.png", width: 00%),
   caption: [],
 ) <Bayesian_app>
 
