@@ -1,3 +1,5 @@
+#import "/images/concept.typ": concept, neatnas, rlnas, bonas
+
 = Concept
 BILDER ÜBERARBEITEN
 
@@ -9,7 +11,7 @@ it is not possible to execute a NAS before starting the whole process of palaest
 making it necessary to run the NAS in parallel.
 
 #figure(
-  image("/images/_concept1.png", width: 00%),
+  scale(70%, reflow: true)[#concept],
   caption: [Adding NAS to the palaestrAI cycle],
 ) <Concept>
 
@@ -30,8 +32,8 @@ Three different approaches of NAS were integrated as shown above:
 + Bayesian Optimisation
 
 #figure(
-  image("/images/_NEAT.png", width: 00%),
-  caption: [],
+  scale(70%, reflow: true)[#neatnas],
+  caption: [Using NEAT as NAS],
 ) <NEAT_app>
 
 @NEAT_app shows the cycle with NEAT as the NAS method.
@@ -44,8 +46,8 @@ Due to the nature of NEAT, the network's weights are also improved throughout ge
 but further improvement with the normal learning process is still possible.
 
 #figure(
-  image("/images/_RLNAS.png", width: 00%),
-  caption: [],
+  scale(70%, reflow: true)[#rlnas],
+  caption: [Using a RL approach as NAS],
 ) <RL_app>
 
 In @RL_app, the cycle is shown with reinforcement learning based NAS.
@@ -58,8 +60,8 @@ The search finishes after a set amount of steps;
 afterwards the latest -- and ideally best -- network is run through the normal learning process, where its weights are improved.
 
 #figure(
-  image("/images/_BONAS.png", width: 00%),
-  caption: [],
+  scale(70%, reflow: true)[#bonas],
+  caption: [Using BO as NAS],
 ) <Bayesian_app>
 
 Lastly, @Bayesian_app shows the cycle with Bayesian Optimisation as the NAS method.

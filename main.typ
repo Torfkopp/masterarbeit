@@ -16,7 +16,9 @@ SAC NAS
   strong(it)
 }
 #outline(indent: auto)
+#pagebreak()
 
+#outline(title: [List of figures], target: figure)
 #pagebreak()
 
 #counter(page).update(1)
