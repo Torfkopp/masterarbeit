@@ -1,4 +1,4 @@
-= Stack
+= Software Stack (Temp until better name)
 
 To build up upon the background knowledge, this section covers the environment 
 in which the optimisation is set, as well as a deeper explanation of the algorithms used.
@@ -6,7 +6,7 @@ in which the optimisation is set, as well as a deeper explanation of the algorit
 == PalaestrAI
 #include "stack/palaestrai.typ"
 
-== harl
+== harl (If own chapter worth elaborate else remove)
 #include "stack/harl.typ"
 
 == SAC

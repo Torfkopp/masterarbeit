@@ -9,7 +9,7 @@ Artificial Intelligence (AI) is a branch of computer science focused on creating
 === Adversarial Reinforcement Learning
 #include "AI/arl.typ"
 
-== Evolutionary Algorithms (Severely lacking sources :[ )
+== Evolutionary Algorithms
 #include "AI/ea.typ"
 
 // == Network Optimisation

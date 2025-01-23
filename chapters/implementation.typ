@@ -20,13 +20,12 @@ in which case the brain will stop calling the NAS and proceed with the SAC algor
 
 Each of the NAS-methods also has a file describing the network. 
 These contain a class for the NAS actor as well as a class for this actor's network.
-Both classes are heavily based on the network implementation of SAC in harl [Source: https://gitlab.com/arl2/harl/-/blob/development/src/harl/sac/network.py?ref_type=heads]. 
+Both classes are heavily based on the network implementation of SAC in harl #footnote[https://gitlab.com/arl2/harl/-/blob/development/src/harl/sac/network.py?ref_type=heads]. 
 The only change made to the original implementation is the net itself; it was made changeable to allow the NAS methods to change the network's architecture.
-
 
 == NEAT
 
-The implementation of NEAT is PyTorch-NEAT, a GitHub repository by ddehueck. [Source: https://github.com/ddehueck/pytorch-neat/]
+The implementation of NEAT is PyTorch-NEAT, a GitHub repository by ddehueck #footnote[https://github.com/ddehueck/pytorch-neat/].
 Minor additions were conducted to make the implementation compatible with this use case:
 A list of rewards and a method to add a reward to it was given to the genomes.
 Further, the fitness function of NEAT was changed to base the genome's fitness on its reward list; the standard fitness is the mean of the rewards, but other functions like the sum or the maximum are also selectable by the user.
@@ -38,7 +37,7 @@ All these parameters are adjusted to the user specified values. The aforemention
 
 == RL
 
-The reinforcement learning based NAS method is based on the 'minimal-nas' implementation by nicklashansen. [Source: https://github.com/nicklashansen/minimal-nas]
+The reinforcement learning based NAS method is based on the 'minimal-nas' implementation by nicklashansen #footnote[https://github.com/nicklashansen/minimal-nas].
 A controller class contains the reinforcement learning algorithm; each time a new network is to be run, 
 the controller is called to optimise its algorithm's network and generate a rollout.
 The 'run'-method of the NAS receives a loss value in addition to the reward.
@@ -48,7 +47,7 @@ A net is generated with these actions by first adding an input layer, then itera
 
 == BO
 
-The Bayesian Optimisation NAS method is based on the python 'bayesian-optimization' implementation. [Source: https://github.com/bayesian-optimization/BayesianOptimization]
+The Bayesian Optimisation NAS method is based on the python 'bayesian-optimization' implementation #footnote[https://github.com/bayesian-optimization/BayesianOptimization].
 For BO, a function to optimise -- the black box function -- is needed.
 In order to let BO generate a usable network, it has to be encoded in a way that it can be used as suck a black box function.
 In this use case, the network is encoded as six parameters each reaching from 0 to 256, depicting the number of features in the corresponding layer.

@@ -1,6 +1,7 @@
 = Background
 
-To fully understand the thesis, background knowledge is required, which is covered in this section. [IWIE SOWAS]
+The implementation and results of this thesis rely on an understanding of machine learning and the environment in which the thesis's study takes place.
+Thus, this chapter outlines the basics of Agents, Machine Learning (Deep Reinforcement Learning and Evolutionary Algorithms), and ways to optimise ML.
 
 == Agents
 #include "background/agents.typ"

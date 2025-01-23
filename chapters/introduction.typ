@@ -6,7 +6,7 @@ systems. As swarm logic, they can handle numerous tasks,
 such as maintaining real power equilibria, voltage control, or
 automated energy trading @holly2020flexibility. The fact that MASs implement
 proactive and reactive distributed heuristics allows to analyze
-their behavior and give certain guarantees, a property that has
+their behaviour and give certain guarantees, a property that has
 helped in their deployment.
 However, modern energy systems have also become valuable
 targets. Cyber-attacks have become more common @hamilton2016lights @aflaki2021hybrid, and
@@ -20,12 +20,12 @@ that provide protection against a widening field of adversarial
 scenarios have become a challenge, especially considering that
 complex, inter-connected Cyber-Physical Systems (CPSs) are
 inherently exploitable due to their complexity itself @hanseth2007risk.
-Learning agents, particularly those based on DRL, have
+Learning agents, particularly those based on Deep Reinforcement Learning (DRL), have
 gained traction as a potential solution: If a system faces
 unknown unknowns, a learning agent can devise strategies
 against it. In the past, researchers have published using
 DRL-based agents for numerous tasks related to power grid
-operations—e. g., voltage control @diao2019autonomous—, but the approach
+operations—e.g. voltage control @diao2019autonomous—, but the approach
 to use DRL for general resilient operation is relatively new
 @fischer2018adversarial @veith2019analyzing. DRL—the notion of an agent with sensors and
 actuators that learns by “trial and error”—is at the core of
@@ -34,10 +34,10 @@ algorithms such as Twin-Delayed DDPG (TD3) @fujimoto2018addressing, Proximal
 Policy Gradient (PPO) @schulman2017proximal, and Soft Actor Critic (SAC) @haarnoja2018soft
 having proved to be able to tackle complex tasks.
 All modern DRL use deep Artificial Neural Networks
-(ANNs) at least for the policy (or multiple, e. g., for the critic).
+(ANNs) at least for the policy (or multiple, e.g. for the critic).
 Actual parameter optimisation is commonly done with gradient
 descent algorithms. However, these ANNs’ architectures still
-need to be provided by the user, in addition the hyperparameters
+need to be provided by the user, in addition to the hyperparameters
 of the algorithm,
 which in itself has some disadvantages:\
 The user may not have the extensive knowledge

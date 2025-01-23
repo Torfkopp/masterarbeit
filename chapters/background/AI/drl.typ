@@ -1,16 +1,21 @@
 One branch of machine learning is the previously mentioned Deep Reinforcement Learning (DRL), which combines deep learning with reinforcement learning in order to enhance the capabilities of the learning algorithm.
 
 ==== Deep <Deep>
-#figure(image("/images/coloured_neural_network.png", width: 30%), caption: [A basic representation of a neural network @network_image]) <network>
+#figure(image("/images/rl_loop.png", width: 30%), caption: [A basic representation of a neural network @network_image]) <network>
 
-'Deep Learning' refers to the use of deep neural networks. Neural networks are models based on the human brain with multiple layers of interconnected neurons - a simple variant is displayed in @network. 
+'Deep Learning' refers to the use of deep neural networks. Neural networks are models based on the human brain with multiple layers of interconnected neurons -- a simple variant is displayed in @network. 
 Neurons are either part of the input, hidden, or output layer. The former layer gets the data given to the network, whilst the latter layer outputs the result of the network. The hidden layers are for the calculation of the result and are not seen by the user of the network, thus the name 'hidden'. The amount of layers in a network is referred to as 'depth' of the network, which is also the reason for the name 'deep learning'. \
 Each neuron has at least one input as well as one output connection. The output of the neuron is based on its input(s) and its inherent function. Each connection between two neurons holds a weight by which the output of the one neuron is multiplied with and the result then is given to the other neuron as input. Changing the weights of the network leads to a change in the result; fine-tuning weights to get a desirable result for every input is the goal of the deep learning algorithms. @anderson1995introduction
 
 ==== Reinforcement
 As mentioned in @machine_learning, 'Reinforcement Learning' is one of the learning paradigms of machine learning. In Reinforcement Learning, the agent learns to make decisions by performing actions in an environment to maximise some notion of cumulative reward. Reinforcement learning is inspired by behavioural psychology and involves the agent learning from the consequences of its actions, rather than from being told explicitly what to do. The agent receives feedback in the form of rewards or penalties, which it uses to adjust its actions to achieve the best long-term outcomes.
 
-#figure(image("/images/rl_loop.png", width: 50%), caption: [The feedback-loop of reinforcement learning algorithms @barto2004intrinsically]) <loop>
+//#figure(image("/images/rl_loop.png", width: 50%), caption: [The feedback-loop of reinforcement learning algorithms @barto2004intrinsically]) <loop>
+#import "/images/diagrams.typ": feed_loop
+#figure(
+  scale(70%, reflow: true)[#feed_loop],
+  caption: [The feedback-loop of reinforcement learning algorithms @barto2004intrinsically],
+) <loop>
 
 In @loop, the standard feedback loop for a reinforcement learning algorithm is illustrated. An agent gets the current state of the environment, which it uses to decide upon actions. These actions and their effect on the environment are evaluated by the critic and handed to the agent along the environment's state. By using the reward to determine whether the proposed actions were good or bad, the agent is able to select the optimal actions corresponding to the highest reward  @puiutta2020explainable.
 

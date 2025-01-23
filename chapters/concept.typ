@@ -1,8 +1,6 @@
-#import "/images/concept.typ": concept, neatnas, rlnas, bonas
+#import "/images/diagrams.typ": concept, neatnas, rlnas, bonas
 
 = Concept
-BILDER ÜBERARBEITEN
-
 In order to establish a neural architecture search (NAS) into the reinforcement learning
 agents of palaestrAI, breaking up the learning cycle is needed.
 Due to the nature of reinforcement learning, namely using the result of the agent's actions
@@ -70,4 +68,3 @@ The result of the network's run is given to the algorithm to improve and select 
 By iterating through this process, the algorithm should be able to find a network with a high reward.
 Same as with the reinforcement learning approach above, 
 the network is run through the normal learning process after the search is finished to improve the weights.
-

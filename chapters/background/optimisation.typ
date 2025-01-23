@@ -1,3 +1,7 @@
+In order to get the most of machine learning algorithms, optimisation is needed.
+Generally, there are two big areas that are more or less algorithm independent and whose improvement
+has a big influence on the performance of the machine learning algorithm:
+the algorithm's hyperparameters and the used network.
 
 === Hyperparameter Optimisation
 
@@ -13,9 +17,7 @@ More advanced techniques include Bayesian Optimisation, which builds a probabili
 
 Lastly, methods like Gradient-based optimisation and evolutionary algorithms can also be applied to hyperparameter tuning, though they are less common. These methods adapt the hyperparameters iteratively based on performance feedback, either by calculating gradients (as in gradient descent) or using evolutionary strategies to evolve a population of hyperparameter sets.
 
-For instance, in Bayesian Optimisation, an acquisition function is used to balance exploration (searching through new, unexplored hyperparameter values) and exploitation (refining the best-known hyperparameter values). This iterative process continues until a specified budget (time or computational resources) is exhausted or the performance improvement plateaus.
-
-In summary, hyperparameters are crucial settings in a machine learning model that dictate the training process. Hyperparameter optimisation seeks to find the best set of these settings to enhance model performance, employing various search strategies from simple Grid and Random Search to more sophisticated methods like Bayesian Optimisation.
+For instance, in Bayesian Optimisation, an acquisition function is used to balance exploration (searching through new, unexplored hyperparameter values) and exploitation (refining the best-known hyperparameter values). This iterative process continues until a specified budget (time or computational resources) is exhausted or the performance improvement plateaus. @feurer2019hyperparameter
 
 === Network Optimisation/ Neural Architecture Search
 
