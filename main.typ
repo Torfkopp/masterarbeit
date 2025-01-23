@@ -7,7 +7,7 @@
 
 SAC NAS
 
-#text(size: 5pt)[Title page under construction]
+#text(size: 8pt)[Title page and styling under construction]
 
 #pagebreak()
 
