@@ -1,43 +1,82 @@
+
 #table(
-  columns: (1fr, auto, auto),
-  inset: 10pt,
-  align: horizon,
-  table.header(
-    [], [*Volume*], [*Parameters*],
-  ),
-  //image("cylinder.svg"),
-  $ pi h (D^2 - d^2) / 4 $,
-  [
-    $h$: height \
-    $D$: outer radius \
-    $d$: inner radius
+  columns: 2,
+  table.header([*Parameter*], [*Value*]),
+  [Experiment], [],
+  [Episodes], [],
+  [Steps per Episode], [],
+  [Reward Function], [],
+  [Step size]
+)
+
+#table(
+  columns: 3,
+  table.header([], [*Attacker*], [*Defender*]),
+  table.hline(stroke: 2pt),
+  [Algorithm], [], [],
+  [Objective],[],[],
+  [batch_size], [], [],
+  [gamma], [], [],
+  [learning rate], [], [],
+  [replay_size], [], [],
+  [update_after], [], [],
+  [update_every], [], [],
+  [start_steps], [], [],
+  [batch_size], [], [],
+)
+
+#table(
+  columns: 3,
+  table.header([], [*Parameter*], [*Value*]),
+  table.cell(rowspan: 5, align: horizon, rotate(-90deg, reflow: true)[Genome]),
+  [NUM_INPUTS], [],
+  [NUM_OUTPUTS], [],
+  [USE_BIAS], [True],
+  [ACTIVATION], [],
+  [SCALE_ACTIVATION], [4.9],
+  table.hline(stroke: 2pt),
+  table.cell(rowspan: 4, align: horizon, rotate(-90deg, reflow: true)[Population]),
+  [FITNESS_THRESHOLD], [16.8],
+  [POPULATION_SIZE], [150],
+  [NUMBER_OF_GENERATIONS], [15],
+  [SPECIATION_THRESHOLD], [3.0],
+  table.hline(stroke: 2pt),
+  table.cell(rowspan: 7, align: horizon, rotate(-90deg, reflow: true)[Algorithm]),
+  [CONNECTION_MUTATION_RATE], [0.80],
+  [CONNECTION_PERTURBATION_RATE], [0.90],
+  [ADD_NODE_MUTATION_RATE], [0.03],
+  [ADD_CONNECTION_MUTATION_RATE], [0.5],
+  [CROSSOVER_REENABLE_CONNECTION_GENE_RATE], [0.25],
+  [PERCENTAGE_TO_SAVE], [0.30],
+  [FITNESS_FUNC], [AVG],
+)
+
+#table(
+  columns: 2,
+  table.header([*Parameter*], [*Value*]),
+  [NUM_ACTIONS], [16],
+  [INDEX_TO_ACTION], [
+    0: 1,
+    1: 2,
+    2: 4,
+    3: 8,
+    4: 16,
+    5: 32,
+    6: 64,    
+    7: 128,
+    8: 256,
+    9: 512,
+    10: 1024,
+    11: "Sigmoid",
+    12: "Tanh",
+    13: "ReLU",
+    14: "LeakyReLU",
+    15: "EOS"
   ],
-  //image("tetrahedron.svg"),
-  $ sqrt(2) / 12 a^3 $,
-  [$a$: edge length]
-) <Test1>
-
-#let a = table.cell(
-  fill: green.lighten(60%),
-)[A]
-#let b = table.cell(
-  fill: aqua.lighten(60%),
-)[B]
-
-#let x = table(
-  columns: 4,
-  [], [Exam 1], [Exam 2], [Exam 3],
-
-  [John], [], a, [],
-  [Mary], [], a, a,
-  [Robert], b, a, b,
-); <Test2>
-
-// Möglichkeit:
-// #import "/images/tables.typ": x
-// #figure(
-//   x,
-//   caption: [],
-// ) <x>
-
-// @x
+  [HIDDEN_SIZE], [64],
+  [EPSILON], [0.8],
+  [GAMMA], [1.0],
+  [BETA], [0.01],
+  [MAX_DEPTH], [6],
+  [CLIP_NORM], [0],
+)
