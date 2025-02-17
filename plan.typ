@@ -10,9 +10,6 @@ TODO:
         - Parametertabellen
     - Algorithmus Parametertabellen
 
-== Introduction
-- umschreiben -> Sollte von mir kommen
-
 == Related Work
 - Weitere Forschungen im ARL-Bereich?
 
@@ -25,9 +22,18 @@ TODO:
 == Software Stack
 - Name?
 - Harl eigenes Chapter?
-  
+
 
 = Außerhalb
 - Experimentfile schreiben
 - Pikachu einrichten
 - Experimente ausführen lassen
+
+
+= Backlog
+== Introduction
+- umschreiben?
+
+#text(font: "DejaVu Serif", size: 10pt)[#lorem(40)] \
+#text(font: "DejaVu Sans", size: 10pt)[#lorem(40)] \
+#text(font: "ARIAL", size: 11pt)[#lorem(40)]

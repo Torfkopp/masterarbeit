@@ -1,13 +1,18 @@
-#set text(region: "GB")
+#set page(paper: "a4", margin: (left:3cm, right: 3cm, top: 3cm, bottom:3cm))
+#set par(leading: 0.65em * 1.5, spacing: 1.5em, justify: true)
+#set text(region: "GB", font: "DejaVu Serif", size: 11pt)
 #set heading(numbering: "1.")
 
 #show "ÜBERARBEITEN": set text(fill: red, size: 40pt)
+#show heading: it => {
+  set text(font: "DejaVu Sans")
+  set block(below: 1em, above: 2em)
+  it
+}
 
-#include "chapters/abstract.typ"
+#include "template/titlepage.typ"
 
-SAC NAS
-
-#text(size: 8pt)[Title page and styling under construction]
+#include "template/abstract.typ"
 
 #pagebreak()
 
@@ -42,3 +47,5 @@ SAC NAS
 
 #pagebreak()
 #bibliography("refs.bib")
+
+#include "template/erklaerung.typ"
