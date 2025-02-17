@@ -1,1 +1,1 @@
-= Results and Evaluation (Maybe 2 seperate chapters)
+= Results and Evaluation (Maybe 2 separate chapters)

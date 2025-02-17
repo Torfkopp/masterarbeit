@@ -38,4 +38,7 @@ SAC NAS
 #include "chapters/conclusion.typ"
 
 #pagebreak()
+#include "chapters/figures.typ"
+
+#pagebreak()
 #bibliography("refs.bib")
