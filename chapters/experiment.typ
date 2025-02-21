@@ -1,16 +1,20 @@
 = Experiment setup
-- 16 different experiments
-  - 4 scenarios x (3 NAS methods + baseline)
+In total, 16 different experiments were conducted:
+Every NAS method as well as a baseline were tested in four different scenarios.
   
 == Scenarios
+In every scenario, the ai agent is tasked with keeping the power grid stable.
+A reactive power controller, realised as a muscle in palaestrAI and thus named reactive power muscle (RPM), is also present in every scenario.
+The four scenarios differ in the grid model used and the usage of COHDARL.
+COHDARL is a distributed heuristic that applies self-organization mechanisms to optimize a global, shared objective.
+It is used to optimize the scheduling of energy resources in virtual power plants and
+operates by representing each distributed energy resource as a self-interested agent, allowing both global scheduling objectives and individual local objectives to be efficiently integrated into a distributed coordination paradigm @hinrichs2017distributed.
 
 #emph[Scenario 1: CIGRE + RPM] \
-As a grid model, the CIGRE Medium Voltage grid model is used @rudion2006cigre. The model is depicted in @cigre.
-A Reactive Power Muscle (RPM) is used to control the grid.
+As a grid model, the CIGRE Medium Voltage grid model is used @rudion2006cigre; a model is depicted in @cigre.
 
 #emph[Scenario 2: CIGRE + RPM + COHDARL] \
 Same as scenario 1, but with the addition of COHDARL.
-COHDARL is ...
 
 #emph[Scenario 3: BHV + RPM] \
 Like scenario 1, but instead of the CIGRE model, a model of Bremerhaven's Medium Voltage grid is used.
@@ -18,9 +22,17 @@ Like scenario 1, but instead of the CIGRE model, a model of Bremerhaven's Medium
 #emph[Scenario 4: BHV + RPM + COHDARL] \
 Like scenario 2, but with the BHV model.
 
-== Parameters
+== Parameters and Settings
+Every scenario is run for ten episodes à one year, which is equivalent to 31,536,000 seconds.
+A step size of 900 seconds is used, resulting in 35,040 steps per episode.
+As reward function, the ExtendedGridHealthReward #footnote("https://gitlab.com/midas-mosaik/midas-palaestrai/-/blob/main/src/midas_palaestrai/rewards.py#L88"),
+a reward based on the grid's 'healthiness' rather the deviation from the best possible status, is used.
+The whole experiment file used can be found xxx.
 
-- Tabellen einfügen
+SAC is ... \
+The parameters used for the algorithms are kept similar to the original implementations mentioned in @implementation.
+
+Tabular display of the parameters can also be found in #link(<appendix>)[the appendix].
 
 
 

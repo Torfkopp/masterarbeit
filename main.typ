@@ -1,11 +1,11 @@
 #set page(paper: "a4", margin: (left:3cm, right: 3cm, top: 3cm, bottom:3cm))
 #set par(leading: 0.65em * 1.5, spacing: 1.5em, justify: true)
-#set text(region: "GB", font: "DejaVu Serif", size: 11pt)
+#set text(region: "GB", font: "Ubuntu", size: 11pt)
 #set heading(numbering: "1.")
 
 #show "ÜBERARBEITEN": set text(fill: red, size: 40pt)
 #show heading: it => {
-  set text(font: "DejaVu Sans")
+  set text(font: "Ubuntu Mono")
   set block(below: 1em, above: 2em)
   it
 }
@@ -40,10 +40,11 @@
 #include "chapters/implementation.typ"
 #include "chapters/experiment.typ"
 #include "chapters/evaluation.typ"
+#include "chapters/problems.typ"
 #include "chapters/conclusion.typ"
 
 #pagebreak()
-#include "chapters/figures.typ"
+#include "chapters/appendix.typ"
 
 #pagebreak()
 #bibliography("refs.bib")
