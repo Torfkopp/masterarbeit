@@ -6,7 +6,7 @@
 #figure(
   scale(70%, reflow: true)[#experiment],
   caption: [Experiment parameters],
-)
+) <exp_paras>
 
 #figure(
   scale(70%, reflow: true)[#sac],
@@ -26,4 +26,4 @@
 #figure(
   scale(70%, reflow: true)[#bo],
   caption: [BO parameters],
-) <rl_paras>
+) <bo_paras>

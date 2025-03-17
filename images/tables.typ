@@ -15,16 +15,16 @@
   table(
     columns: 2,
     //table.header([], [*Attacker*], [*Defender*]),
-    table.hline(stroke: 2pt),
+    //table.hline(stroke: 2pt),
     [Objective],[ArlDefenderObjective/\ COHDARLObjective],
     [batch_size], [1000],
     [fc_dims], [[48, 48]],
     [gamma], [0.99],
     [learning rate], [0.003],
     [replay_size], [1e6],
-    [update_after], [0],
+    [update_after], [1000 | 0],
     [update_every], [50],
-    [muscle start_steps], [0],
+    [muscle start_steps], [1000 | 0],
   )
 )
 
