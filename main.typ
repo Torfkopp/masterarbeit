@@ -1,13 +1,15 @@
-#set page(paper: "a4", margin: (left:3cm, right: 3cm, top: 3cm, bottom:3cm))
+#set page(paper: "a4")
+//#set page(margin: (left:3cm, right: 3cm, top: 3cm, bottom:3cm))
+#set page(margin: (inside: 4cm, outside: 3cm, top: 3cm, bottom: 3cm))
 #set par(leading: 0.65em * 1.5, spacing: 1.5em, justify: true)
 #set text(region: "GB", font: "Ubuntu", size: 11pt)
 #set heading(numbering: "1.")
 
 #show "ÜBERARBEITEN": set text(fill: red, size: 40pt)
 #show heading: it => {
-  set text(font: "Ubuntu Mono")
+  set text(font: "Libertinus Serif")
   set block(below: 1em, above: 2em)
-  it
+  smallcaps(it)
 }
 
 #include "template/titlepage.typ"

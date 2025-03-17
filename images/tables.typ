@@ -1,12 +1,11 @@
 
 #let experiment = (
   table(
-    fill: red,
     columns: 2,
     table.header([*Parameter*], [*Value*]),
-    [Experiment], [],
+    [Net], [CIGRE],
     [Amount Steps], [1 Year (31.536.000 seconds)],
-    [Steps per Episode], [],
+    [Episodes], [10],
     [Reward Function], [ExtendedGridHealthReward],
     [Step size], [900]
   )
@@ -17,14 +16,15 @@
     columns: 2,
     //table.header([], [*Attacker*], [*Defender*]),
     table.hline(stroke: 2pt),
-    [Objective],[Objective/\ COHDARLObjective],
+    [Objective],[ArlDefenderObjective/\ COHDARLObjective],
     [batch_size], [1000],
+    [fc_dims], [[48, 48]],
     [gamma], [0.99],
     [learning rate], [0.003],
     [replay_size], [1e6],
-    [update_after], [1000],
+    [update_after], [0],
     [update_every], [50],
-    [muscle start_steps], [#text(fill:red)[1000]],
+    [muscle start_steps], [0],
   )
 )
 
@@ -32,7 +32,8 @@
   table(
     columns: 3,
     table.header([], [*Parameter*], [*Value*]),
-    table.cell(rowspan: 5, align: horizon, rotate(-90deg, reflow: true)[Genome]),
+    table.cell(rowspan: 6, align: horizon, rotate(-90deg, reflow: true)[Genome]),
+    [Runs per genome], [50],
     [NUM_INPUTS], [Amount of Sensors],
     [NUM_OUTPUTS], [Amount of Actuators],
     [USE_BIAS], [True],
@@ -40,9 +41,9 @@
     [SCALE_ACTIVATION], [4.9],
     table.hline(stroke: 2pt),
     table.cell(rowspan: 4, align: horizon, rotate(-90deg, reflow: true)[Population]),
-    [FITNESS_THRESHOLD], [#text(fill:red)[16.8]],
+    [FITNESS_THRESHOLD], [1000],
     [POPULATION_SIZE], [150],
-    [NUMBER_OF_GENERATIONS], [15],
+    [NUMBER_OF_GENERATIONS], [30],
     [SPECIATION_THRESHOLD], [3.0],
     table.hline(stroke: 2pt),
     table.cell(rowspan: 7, align: horizon, rotate(-90deg, reflow: true)[Algorithm]),
@@ -60,7 +61,8 @@
   table(
     columns: 2,
     table.header([*Parameter*], [*Value*]),
-    [Runs per network], [],
+    [NAS runs], [300],
+    [Runs per network], [20],
     [NUM_ACTIONS], [16],
     [INDEX_TO_ACTION], [
       0: 1,
@@ -93,10 +95,8 @@
   table(
     columns: 2,
     table.header([*Parameter*], [*Value*]),
-    [Runs per network], [],
-    [INIT_POINTS], [],
-    [N_ITER], [],
-    [BLACK_BOX_FUNCTION], [],
-    [P_BOUNDS], [],
+    [Runs per network], [20],
+    [INIT_POINTS], [100],
+    [N_ITER], [200],
   )
 )

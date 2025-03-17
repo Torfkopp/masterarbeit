@@ -1,4 +1,29 @@
 = Experiment setup
+
+- 8 Experiments in total
+  - 2 different scenarios
+  - 4 different algorithms (base, NEAT, RL, BO)
+- Experiments:
+  - Base + CIGRE
+  - NEAT + CIGRE
+  - RL + CIGRE
+  - BO + CIGRE
+  - Base + COHDARL + CIGRE
+  - NEAT + COHDARL + CIGRE
+  - RL + COHDARL + CIGRE
+  - BO + COHDARL + CIGRE
+
+== Scenarios
+
+=== CIGRE
+
+=== CIGRE + COHDARL
+
+== Parameters
+
+...
+
+/* Old version with bhv
 In total, 16 different experiments were conducted:
 Every NAS method as well as a baseline were tested in four different scenarios.
   
@@ -33,7 +58,7 @@ SAC is ... \
 The parameters used for the algorithms are kept similar to the original implementations mentioned in @implementation.
 
 Tabular display of the parameters can also be found in #link(<appendix>)[the appendix].
-
+*/
 
 
 /*For the experiments, four different scenarios are used:
