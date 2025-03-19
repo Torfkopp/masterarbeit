@@ -25,9 +25,6 @@ Consistent with the usage of COHDARL, the 'defender' agent is given the COHDARL 
 == Parameters
 
 The experiment's parameters are shown in @exp_paras and the whole experiment file can be found #link("https://gitlab.com/arl2/harl/-/blob/nas/src/harl/sac/nas/experiments/palaestrai-runfiles/NAS-Exp-Short.yml")[in the 'nas'-branch of harl]. //"https://gitlab.com/arl2/harl/-/blob/nas/src/harl/sac/nas/experiments/NAS-Experiment_run-0.yml?ref_type=heads"
-Every scenario is run for ten episodes, each representing one year, which is equivalent to 31,536,000 seconds.
-A step size of 900 seconds is used, resulting in 35,040 steps per episode.
-
 Every scenario is run for ten episodes, each representing a hundred days, which is equivalent to 8,640,000 seconds. //one year, which is equivalent to 31,536,000 seconds.
 A step size of 900 seconds is used, resulting in 9,600 steps per episode or 28,800 steps for the whole simulation. //in 35,040
 As reward function, the ExtendedGridHealthReward #footnote("https://gitlab.com/midas-mosaik/midas-palaestrai/-/blob/main/src/midas_palaestrai/rewards.py#L88"),
