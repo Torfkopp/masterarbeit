@@ -8,7 +8,7 @@ The functionality of an agent can be split into three parts:
 A modern example of an agent is the robotic vacuum cleaner, which has a designated area to be cleaned by it -- the environment --, sensors like cameras or infrared sensors, and actuators in form of motors for driving and vacuuming. The robot's objective is to clean its territory, which it achieves independently @wooldridge2009introduction.
 
 Agents are intelligent, when they are capable of flexible autonomous actions. 'Flexible' means, that the agent is capable of reactivity, by responding to changes in the environment;
-pro-activeness, by exhibiting goal-directed behaviour and taking the initiative in order to satisfy their design objectives; and social ability, by interacting with other agents (and possibly humans). @wooldridge1999intelligent #text(fill: red)[Quelle auch vorm Punkt, wenn es für den ganzen Absatz gilt?]
+pro-activeness, by exhibiting goal-directed behaviour and taking the initiative in order to satisfy their design objectives; and social ability, by interacting with other agents (and possibly humans). @wooldridge1999intelligent
 
 === Multi-Agent Systems (MAS)
 

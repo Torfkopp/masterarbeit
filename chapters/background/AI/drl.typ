@@ -17,9 +17,9 @@ As mentioned in @machine_learning, 'Reinforcement Learning' is one of the learni
   caption: [The feedback-loop of reinforcement learning algorithms @barto2004intrinsically],
 ) <loop>
 
-In @loop, the standard feedback loop for a reinforcement learning algorithm is illustrated. An agent gets the current state of the environment, which it uses to decide upon actions. These actions and their effect on the environment are evaluated by the critic and handed to the agent along the environment's state. By using the reward to determine whether the proposed actions were good or bad, the agent is able to select the optimal actions corresponding to the highest reward  @puiutta2020explainable.
+In @loop, the standard feedback loop for a reinforcement learning algorithm is illustrated. An agent gets the current state of the environment, which it uses to decide upon actions. These actions and their effect on the environment are evaluated by the critic and handed to the agent along the environment's state. By using the reward to determine whether the proposed actions were good or bad, the agent is able to select the optimal actions corresponding to the highest reward @puiutta2020explainable.
 
-==== History (Chat GPT, if useful improve else remove)
+/*==== History (Chat GPT, if useful improve else remove)
 The history of Deep Reinforcement Learning combines advancements in both reinforcement learning and deep learning.
 
 Around the end of the last century (1980s-2000s), early work in reinforcement learning focused on developing foundational algorithms such as Q-learning and temporal difference learning. These algorithms, however, struggled with high-dimensional state spaces due to their reliance on hand-crafted features and tabular methods.
@@ -27,11 +27,12 @@ Around the end of the last century (1980s-2000s), early work in reinforcement le
 Around the 2000s, parallel advancements in deep learning, driven by increased computational power and large datasets, led to the development of powerful neural networks capable of handling complex data. Convolutional Neural Networks (CNNs) and advancements in backpropagation were pivotal.
 
 The integration of deep learning with reinforcement learning began to take shape around 2013, leading to the emergence of DRL. A seminal moment was the introduction of the Deep Q-Network (DQN) by researchers at DeepMind in 2013. DQN combined Q-learning with convolutional neural networks to play Atari games at superhuman levels, demonstrating the potential of DRL. This success spurred a wave of research and applications, leading to more sophisticated DRL algorithms like Deep Deterministic Policy Gradients (DDPG), Asynchronous Advantage Actor-Critic (A3C), and Proximal Policy Optimisation (PPO).
+*/
 
 ==== Abilities of DRL
 Deep Reinforcement Learning stands out for several reasons: \
 Firstly, it is able to handle high-dimensional data; DRL can process and learn from high-dimensional data inputs, such as images and videos, directly from raw pixels, without requiring manual feature engineering. \
 It is also capable of end-to-end learning; DRL frameworks can learn policies directly from input to output in an end-to-end manner. This holistic approach streamlines the process of training agents to perform complex tasks. \
-Scalability is another specialty of DRL; The use of deep neural networks enables DRL to scale to problems with vast state and action spaces, which were previously infeasible with traditional reinforcement learning methods. @arulkumaran2017deep \
-Furthermore, DRL has been successfully applied to a wide range of real-world problems, including robotics, autonomous driving, game playing, finance, and healthcare. Notable achievements include AlphaGo defeating human champions in Go and DRL agents excelling in complex video games and simulations. @silver2016mastering
-And lastly, DRL agents can continuously learn and adapt to changing environments, making them suitable for dynamic and uncertain scenarios where the environment evolves over time. @arulkumaran2017deep
+Scalability is another specialty of DRL; The use of deep neural networks enables DRL to scale to problems with vast state and action spaces, which were previously infeasible with traditional reinforcement learning methods @arulkumaran2017deep. \
+Furthermore, DRL has been successfully applied to a wide range of real-world problems, including robotics, autonomous driving, game playing, finance, and healthcare. Notable achievements include AlphaGo defeating human champions in Go and DRL agents excelling in complex video games and simulations @silver2016mastering.
+And lastly, DRL agents can continuously learn and adapt to changing environments, making them suitable for dynamic and uncertain scenarios where the environment evolves over time @arulkumaran2017deep.

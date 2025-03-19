@@ -19,7 +19,7 @@ Lastly, methods like Gradient-based optimisation and evolutionary algorithms can
 
 For instance, in Bayesian Optimisation, an acquisition function is used to balance exploration (searching through new, unexplored hyperparameter values) and exploitation (refining the best-known hyperparameter values). This iterative process continues until a specified budget (time or computational resources) is exhausted or the performance improvement plateaus. @feurer2019hyperparameter
 
-=== Network Optimisation/ Neural Architecture Search
+=== Network Optimisation and Neural Architecture Search
 
 As already mentioned in @Deep, networks are a vital part of deep reinforcement learning algorithms. Their topology, which describes the arrangement of the neurons and how they are connected amongst each other, has a big influence on the learning performance of the algorithm  @probst2019tunability.
 Automating the design of these neural networks is a challenging task that has been addressed by the field of neural architecture search (NAS). NAS aims to find the optimal network architecture for a given task without human intervention, by searching through a vast space of possible network architectures to identify the most effective design for a specific problem.

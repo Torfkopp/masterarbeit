@@ -24,9 +24,12 @@ Consistent with the usage of COHDARL, the 'defender' agent is given the COHDARL 
 
 == Parameters
 
-The experiment's parameters are shown in @exp_paras and the whole experiment file can be found #link("https://gitlab.com/arl2/harl/-/blob/nas/src/harl/sac/nas/experiments/NAS-Experiment_run-0.yml?ref_type=heads")[in the 'nas'-branch of harl].
+The experiment's parameters are shown in @exp_paras and the whole experiment file can be found #link("https://gitlab.com/arl2/harl/-/blob/nas/src/harl/sac/nas/experiments/palaestrai-runfiles/NAS-Exp-Short.yml")[in the 'nas'-branch of harl]. //"https://gitlab.com/arl2/harl/-/blob/nas/src/harl/sac/nas/experiments/NAS-Experiment_run-0.yml?ref_type=heads"
 Every scenario is run for ten episodes, each representing one year, which is equivalent to 31,536,000 seconds.
 A step size of 900 seconds is used, resulting in 35,040 steps per episode.
+
+Every scenario is run for ten episodes, each representing a hundred days, which is equivalent to 8,640,000 seconds. //one year, which is equivalent to 31,536,000 seconds.
+A step size of 900 seconds is used, resulting in 9,600 steps per episode or 28,800 steps for the whole simulation. //in 35,040
 As reward function, the ExtendedGridHealthReward #footnote("https://gitlab.com/midas-mosaik/midas-palaestrai/-/blob/main/src/midas_palaestrai/rewards.py#L88"),
 a reward based on the grid's "healthiness" -- meaning the deviation from the best possible status --, is used.
 
@@ -45,15 +48,16 @@ this parameter is adopted for the NAS experiments, but has no influence on the N
 
 The parameters for the NAS methods are shown in @neat_paras, @rl_paras, and @bo_paras.
 They are mostly kept to the default values of their implementations.
-NEAT's threshold is increased to a value of 1000, whilst the number of generations is set to 30.
+NEAT's threshold is increased to a value of 1000, whilst the number of generations is set to 15. // 30
 This increase to an unreachable threshold is done to ensure that NEAT finishes 
-after the maximum number of generations is reached and not finishing early due to a genome exceeding the threshold,
-because a good value for the threshold was not known before starting the experiments.
+after the maximum number of generations is reached and not finishing early due to a genome exceeding an arbitrary set threshold,
+because a good value for the threshold was not known prior to starting the experiments.
 The RL approach's `INDEX_TO_ACTION`-dictionary was expanded with additional values for the hidden sizes to allow for bigger networks.
 
 Parameters that were established for this thesis's implementation like NEAT's `runs_per_genome` or RL's `runs_per_network`
 as well as parameters like BO's `N_ITER` that define the algorithm's duration were adapted to the experiment's runtime and scaled accordingly.
-
+This leads to every NAS method running for a similar amount of time -- 25.000 steps in total -- // 300.000 or so
+with the remaining steps being run with the network that performed best during the NAS method's runtime.
 
 /* Old version with bhv
 In total, 16 different experiments were conducted:

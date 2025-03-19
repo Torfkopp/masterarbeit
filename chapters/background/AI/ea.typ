@@ -9,7 +9,7 @@ Evolutionary algorithms typically go through a circle of following steps:
 + Selection: Individuals are selected for reproduction based on their fitness, favouring the fittest individuals.
 + Crossover: Selected individuals are paired, and their genetic material is recombined to produce offspring with mixed traits.
 + Mutation: Offspring undergo random mutations to introduce new genetic variations.
-+ Replacement: The new generation replaces the old population, and the cycle repeats until a stopping criterion is met (e.g., a solution is found or a maximum number of generations is reached).
++ Replacement: The new generation replaces the old population, and the cycle repeats until a stopping criterion is met (e.g. a solution is found or a maximum number of generations is reached).
 
 By going through this cycle iteratively, evolutionary algorithms mimic the process of natural selection, where the fittest individuals are more likely to survive and pass on their genetic material to the next generation. Over time, the population evolves towards better solutions.
 Ideally, the population converges towards the global optimum, representing the best solution to the optimisation problem, but early stopping criteria like a predetermined threshold are often used to prevent overfitting or stagnation.

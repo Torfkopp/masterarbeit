@@ -8,7 +8,7 @@
     //node-fill: gradient.radial(white, green, radius: 200%),
     node-stroke: black,
     node(
-      align(top + right)[Current], enclose: (<env>, <brain>, <muscle>, (0,3)), name: <old>,
+      align(top + right)[Current], enclose: (<env>, <brain>, <muscle>, (0,3)), name: <old>, stroke: white
     ),
     node((0,0), "Env", shape: pill, name: <env>),
     edge("-|>", label: "reward", label-side: left),
@@ -19,7 +19,7 @@
     edge(<brain.south-west>, "->", <brain.south-east>, bend:-120deg, label: "train"),
     edge((2.2, 1.5), (4, 1.5), "=>", stroke: 1pt),
     node(
-      align(top + right)[With NAS], enclose: (<env2>, <brain2>, <muscle2>, <nas>), name: <new>,
+      align(top + right)[With NAS], enclose: (<env2>, <brain2>, <muscle2>, <nas>), name: <new>, stroke: white
     ),
     node((4,0), "Env", shape: pill, name: <env2>),
     edge("-|>", label: "reward", label-side: left),
