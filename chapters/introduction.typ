@@ -36,28 +36,49 @@ Policy Gradient (PPO) @schulman2017proximal, and Soft Actor Critic (SAC) @haarno
 which have proven their ability to tackle complex tasks.
 All modern DRLs use deep artificial neural networks
 (ANNs) at least for the policy (or several, e.g. for the critic).
-The actual parameter optimisation is usually done with gradient descent algorithms.
-descent algorithms. However, the architectures of these ANNs still have to be
-by the user, in addition to the hyperparameters of the algorithm.
-of the algorithm,
+The choice of the architecture of these neural networks has a great influence on the
+performance and quality of the learning, as shown e.g. by @probst2019tunability.
+But despite its importance, the choice is still mostly up to the user,
 which in itself has some disadvantages:
 The user may not have the extensive knowledge
 in the field of machine learning needed to optimise
-the network's architecture and hyperparameters.
-This may lead to the user choosing by themself
-or staying with the standard parameters, which are not adapted
-to the current task. Both cases can result in a subpar choice of
-hyperparameters and architecture, thus leading to an unsatisfying
-result since theses settings have a severe influence on the
-performance and quality of the learning, as shown e.g. by @probst2019tunability.
+the network's architecture; thus the user may choose by themself
+or stay with the standard parameters, which are not adapted
+to the current task. Both cases can result in a subpar choice of a
+architecture, thus leading to an unsatisfying result.
 Additionally, because the agents are part of a critical infrastructure,
-the choice of hyperparameters and architecture has to be reasoned upon.
+the choice of architecture has to be reasoned upon.
 \
-The goal of this work is thus to establish an algorithm 
-to chose the architectures and hyperparameters
-for the machine learning algorithm automatically, 
-in order to always have a good choice without the need for user input,
-which solves the problems stated above.
+This leads to this work's hypothesis that 
+the choice of a neural network's architecture can be automated with a NAS algorithm, which
+does this task in a way that improves upon the performance of a user picked architecture
+in a reasonable amount of time.
+
+// the choice of the neural network's architecture
+// can be automated with a NAS algorithm, which 
+
+// The actual parameter optimisation is usually done with gradient descent algorithms.
+// descent algorithms. However, the architectures of these ANNs still have to be
+// by the user, in addition to the hyperparameters of the algorithm.
+// of the algorithm,
+// which in itself has some disadvantages:
+// The user may not have the extensive knowledge
+// in the field of machine learning needed to optimise
+// the network's architecture and hyperparameters.
+// This may lead to the user choosing by themself
+// or staying with the standard parameters, which are not adapted
+// to the current task. Both cases can result in a subpar choice of
+// hyperparameters and architecture, thus leading to an unsatisfying
+// result since theses settings have a severe influence on the
+// performance and quality of the learning, as shown e.g. by @probst2019tunability.
+// Additionally, because the agents are part of a critical infrastructure,
+// the choice of hyperparameters and architecture has to be reasoned upon.
+// \
+// The goal of this work is thus to establish an algorithm 
+// to chose the architectures and hyperparameters
+// for the machine learning algorithm automatically, 
+// in order to always have a good choice without the need for user input,
+// which solves the problems stated above.
 
 /* OLD ONE
 Over the last years, agent systems and especially Multi-Agent Systems (MASs)  have emerged as one of the

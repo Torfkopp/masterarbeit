@@ -14,9 +14,9 @@ Optimisation of Reinforcement Learning using Evolutionary Algorithms
 Mario Fokken\
 
 #v(10%)
-Betreuender Gutachter:  \
-Zweiter Gutachter: 
+#emph[Betreuender Gutachter:]\ Dr.-Ing Eric Veith  \
+#emph[Zweiter Gutachter:]\  M.Sc. Torben Logemann
 
 
-#place(bottom)[Ort, Datum]
+#place(bottom)[Oldenburg, 20.03.2025]
 #pagebreak()

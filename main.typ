@@ -11,6 +11,7 @@
   set block(below: 1em, above: 2em)
   smallcaps(it)
 }
+#show heading.where(level: 1): it => { colbreak(weak: true); it}
 
 #include "template/titlepage.typ"
 
@@ -34,16 +35,20 @@
 #set page(numbering: "1")
 
 #include "chapters/introduction.typ"
-#include "chapters/background.typ"
-#include "chapters/related_work.typ"
-#include "chapters/stack.typ"
+#include "chapters/basics.typ"
 
-#include "chapters/concept.typ"
-#include "chapters/implementation.typ"
-#include "chapters/experiment.typ"
-#include "chapters/evaluation.typ"
-#include "chapters/problems.typ"
-#include "chapters/conclusion.typ"
+//#include "chapters/background.typ"
+//#include "chapters/related_work.typ"
+
+
+
+// #include "chapters/stack.typ"
+// #include "chapters/concept.typ"
+// #include "chapters/implementation.typ"
+// #include "chapters/experiment.typ"
+// #include "chapters/evaluation.typ"
+// #include "chapters/problems.typ"
+// #include "chapters/conclusion.typ"
 
 #pagebreak()
 #include "chapters/appendix.typ"
