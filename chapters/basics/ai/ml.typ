@@ -15,3 +15,10 @@ Machine learning encompasses several types of learning paradigms, each suited to
 - Reinforcement Learning: In reinforcement learning, an agent interacts with an environment and learns to make decisions by receiving rewards or penalties. The agent's objective is to maximise cumulative rewards over time. This paradigm is often applied in robotics, game playing, and autonomous systems.
 
 Machine learning's ability to analyse vast amounts of data and extract meaningful insights has revolutionised many industries. In healthcare, ML algorithms can predict disease outbreaks, diagnose medical conditions from imaging data, and personalise treatment plans. In finance, they are used for credit scoring, fraud detection, and algorithmic trading. Autonomous vehicles rely on machine learning for navigation, obstacle detection, and decision-making. Additionally, ML powers recommendation systems for online shopping and content streaming platforms, enhancing user experiences by suggesting products and media based on individual preferences. @mitchell1997machine
+
+=== Independent and identically distributed random variables
+//https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables
+=== Stochastic Gradient Descent
+//https://en.wikipedia.org/wiki/Stochastic_gradient_descent
+=== Adaptive Moment Estimation
+//https://en.wikipedia.org/wiki/Stochastic_gradient_descent#Adam

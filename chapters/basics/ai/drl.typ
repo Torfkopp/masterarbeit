@@ -99,11 +99,31 @@ Not being able to reuse data points makes them unable to learn from past experie
 Off-Policy algorithms, on the other hand, use a memory replay buffer to store and reuse samples.
 This way, data effiency is improved, but often at a cost in stability and ease of use. @gu2017interpolated
 
-==== Q-Learning
+==== Policy Gradient Method <policy_gradient>
+
+Policy gradient methods are reinforcement learning approaches that directly optimise the policy.
+They are centered around a parametrised policy $pi_theta$ with parameters $theta$
+that allow the selection of actions $a$ given the state $s$.
+The policy can either be deterministic $a = pi_theta (s)$ or stochastic $a ~ pi_theta (a|s)$.
+
+The goal of the algorithm is to optimise the expected return
+$ J(theta) = Z_gamma E{sum_"k=0"^H gamma^k r_k} \, $
+where $gamma$ denotes a discount factor, $Z_gamma$ is a normalisation factor, $H$ is the horizon, and $r_k$ is the reward at time step $k$.
+
+The policy gradient methods follow the gradient of the expected return
+$ theta_"k+1" = theta_k + alpha_k nabla_theta J(pi_theta)|_(theta=theta_k) $
+
+Policy gradient approaches have the advantages that they often have fewer parameters for representing the optimal policy than value-based methods,
+and they are guaranteed to converge to at least a locally optimal policy. They also can handle continuous states and actions,
+and often even imperfect state information. However, they are slow to converge in discrete problems,
+global optima are not attained and they are difficult to use in off-policy settings. @peters2010policy
+
+==== Q-Learning <q-learning>
 
 An early off-policy reinforcement learning algorithm that uses the Bellman equation is Q-learning @watkins1992q.
 It defines Q values (or action-values) for a policy $pi$:
-$ Q^pi (x, a) = Re_x(a) + gamma  sum_y P_"xy" [pi(x)] V^pi (y) $
+$ Q^pi (x, a) = Re_x(a) + gamma  sum_y P_"xy" [pi(x)] V^pi (y) \, $
+where $theta_k$ denotes the parameters after update $k$ with initial policy $theta_0$ and $alpha_k$ is the learning rate.
 
 Meaning, the Q value is the expected discounted reward for executing action $a$ at state $x$ and following policy $pi$ therafter.
 Theoretically, by using the policy to always take the action with the highest Q value, the Q-learning agent is able to find the optimal policy.
@@ -121,14 +141,26 @@ in the nth episod, the agent:
   where
   $V_"n-1" (y) eq.triple max_b { Q_"n-1" (y, b)} $
   is the best the agent thinks it can do from state $y$. 
-  
-To represent the Q values $Q_n (x, a)$, the algorithm uses a look-up table since other representations may not converge correctly. @watkins1992q
+
+#figure(
+  table(
+    columns: 5,
+    [State], [Action1], [Action2], [...], [ActionN],
+    [A], [0.5], [-0.2], [...], [0.8],
+    [B], [0.9], [0.1], [...], [-0.3],
+    [...], [...], [...], [...], [...],
+    [Z], [0.2], [0.8], [...], [0.9],
+  ),
+  caption: [An example of a look-up table for Q values]
+) <look-up>
+To represent the Q values $Q_n (x, a)$, the algorithm uses a look-up table like shown in @look-up since other representations may not converge correctly. @watkins1992q
 
 ==== Deep Q-Network
 
 An advancement of Q-learning is Deep Q-Network (DQN) @mnih2015human,
 which combines Q-Learning with deep neural networks.
-Instead of the look-up table representation, DQN uses a neural network to approximate the optimal Q values:
+Instead of the look-up table representation, which becomes impractical for large state spaces due to high memory usage,
+DQN uses a neural network to approximate the optimal Q values:
 $ Q^*(s,a) = max_a EE[r_t + gamma r_"t+1" + gamma^2 r_"t+2" + ... |s_t = s, a_t = a, pi] "," $
 which is the maximum sum of rewards $r_t$ discounted by $gamma$ at each time step $t$,
 achievable by a behaviour policy $pi = P(a|s)$, after making an observation ($s$) and taking an action ($a$).
@@ -148,11 +180,166 @@ The target network's weights $theta_i^-$ held fixed between individual updates a
 updated with the Q-network's parameters ($theta_i$) at fixed intervalls. @mnih2015human
 
 ==== Deep Deterministic Policy Gradients
-// https://www.perplexity.ai/search/545d9424-67e3-432f-aa3c-b825bc357970
-// https://spinningup.openai.com/en/latest/algorithms/ddpg.html
-// 
+
+While DQN can solve problems high-dimensional observation spaces,
+it can only handle discrete and low-dimensional action spaces.
+To address these issues and to be able to solve continuous action spaces,
+Deep Deterministic Policy Gradients (DDPG) @lillicrap2015continuous was introduced,
+which combines the insights of DQN with the actor-critic approach.
+The actor-critic approach itself combines the policy gradient methods of @policy_gradient as the actor
+with the value-based methods of @q-learning as the critic, to take advantage of the strengths of both approaches.
+
+Initially, DDPG randomly initialises the critic network $Q(s, a|theta^Q)$ and actor $mu(s|theta^mu)$ with
+their corresponding weights $theta^Q$ and $theta^mu$. \
+It then repeatedly goes through episodes, each of which consists of first
+initialising a random process $N$ for action exploration, then observing the current state $s_t$,
+followed by repeating the following steps a predetermined number of times:
++ Select action $a_t = mu(s_t|theta^mu) + N_t$ with $N_t$ being the exploration noise
++ Execute action $a_t$ and observe reward $r_t$ and new state $s_"t+1"$
++ Store experience ($s_t$, $a_t$, $r_t$, $s_"t+1"$) in replay buffer $R$
++ Sample a random minibatch of $N$ transitions ($s_i$, $a_i$, $r_i$, $s_"i+1"$) from $R$
++ Set $y_i = r_i + gamma Q'(s_(i+1), mu'(s_(i+1)|theta^mu')|theta^Q')$
++ Update critic by minimising the loss $L = 1/N sum_i (y_i - Q(s_i, a_i|theta^Q))^2$
++ Update the actor policy using the sampled policy gradient:
+  $ nabla_(theta^mu) J approx 1/N sum_i nabla_a Q(s, a|theta^Q)|_(s=s_i, a=mu(s_i)) nabla_(theta^mu) mu(s|theta^mu)|_(s_i) $
++ Update the target networks:
+  $ theta^Q' <- r theta^Q + (1 - tau)theta^Q' $
+  $ theta^mu' <- r theta^mu + (1 - tau)theta^mu' $
+
+This leads to DDPG finding solutions for Atari games in a factor of 20 fewer steps than DQN. @lillicrap2015continuous
+
 ==== TD3
-// https://spinningup.openai.com/en/latest/algorithms/td3.html
+
+While DDPG can sometimes achieve great performance, it is often brittle with respect to hyperparameters and other types of tuning. A common failure mode for DDPG is that the learned Q-function starts to dramatically overestimate Q-values, which then leads to the policy breaking because it exploits the errors in the Q-function.
+To address these issues, Twin Delayed Deep Deterministic Policy Gradient (TD3) @fujimoto2018addressing was introduced.
+TD3 applies three modifications to DDPG to increase the stability and performance with consideration of the function approximation error:
++ Clipped Double Q-Learning: TD3 uses two Q-functions to mitigate the overestimation of Q-values. The minimum of the two Q-values is used to compute the target value,
+  resulting in the target update being:
+  $ y_1 = r + gamma min_(i=1,2)Q_theta_i^' (s', pi_phi.alt_1(s')) \, $
+  with $Q_theta_i^' (s', pi_phi.alt_1(s'))$ being the Q-value of the target network $Q_theta_i^'$ for the next state $s'$ and the action $pi_phi.alt_1(s')$.
+
++ "Delayed" Policy Updates: The policy is updated less frequently than the Q-function, which prevents the policy from overfitting to the current Q-function. One policy update for every two Q-function updates is recommended.
+
++ Target Policy Smoothing: TD3 adds noise to the target action, to make it harder for the policy to exploit Q-function errors by smoothing out Q along changes in action:
+  $ y = r + gamma Q_theta' (s', pi_phi.alt'(s') + epsilon.alt), epsilon.alt ~ "clip"(cal(N)(0, sigma), -c, c) \, $
+  with $epsilon$ being the noise sampled from a clipped normal distribution.
+
+These modifications lead to TD3 greatly improving both learning speed and performance of DDPG in a 
+number of challenging tasks in the continuous control setting. @fujimoto2018addressing
 
 ==== SAC
-// https://spinningup.openai.com/en/latest/algorithms/sac.html
+
+Soft Actor Critic (SAC) is like DDPG and TD3 an off-policy actor-critic algorithm,
+but instead of only trying to maximise the expected return, it also maximises the entropy of the policy.
+That way, the algorithm strives to succeed at the task while acting as randomly as possible.
+
+To factor in the entropy, it uses a maximum entropy objective which favours stochastic policies 
+by adding the expected entropy of the policy over $rho_pi(s_t)$ to the objective:
+
+$ J(pi) = sum_(t=0)^T EE_((s_t, a_t)~rho_pi)[r(s_t, a_t) + alpha cal(H)(pi(dot.c|s_t))] \, $
+
+where $alpha$ is the temperature parameter that determines the relative importance of the entropy term $cal(H)$ against the reward and
+controls the stochasticity of the optimal policy.
+As the temperature approaches zero ($alpha -> 0$), the maximum entropy objective reduces to the conventional maximum expected return objective.
+
+The objective has several advantages like being incentivised to explore more widely, while abandoning unpromising routes.
+It can also capture multiple modes of near-optimal behaviour; in problem settings where multiple actions appear equally attractive, 
+the policy will give equal probability mass to those actions. 
+Lastly, it has been observed that it improves learning speed over other state-of-art algorithms, 
+which use the conventional objective of maximising the expected sum of rewards, like DDPG and TD3.
+
+#import "@preview/algo:0.3.6": algo, i, d, comment, code
+#figure(
+algo(
+  header: [
+    #set text(font: "Libertinus Serif", weight: "bold")
+    #smallcaps("Soft Actor Critic")\ 
+    #v(-1.5em) #repeat("_")
+  ],
+  main-text-styles: (size: 10pt),
+  comment-styles: (size: 10pt),
+  line-numbers: false,
+  indent-size: 10pt,
+  indent-guides: 1pt + gray,
+  inset: 5pt,
+  column-gutter: 10pt
+)[
+  *Input:* $theta_1, theta_2, phi.alt$ #comment("Initial parameters")\
+  $theta_1 <- theta_1, theta_2 <- theta_2$ #comment("Initialise target network weights")\
+  $cal(D) <- nothing$ #comment("Initialise an empty replay pool")\
+  for each interation do#i\
+    for each environment step do#i\
+      $a_t ~ pi_phi.alt (a_t|s_t)$. #comment("Sample action from the policy")\
+      $s_(t+1) ~ p(s_(t+1)|s_t, a_t)$ #comment("Sample transition from the environment")\
+      $cal(D) <- cal(D) union {(s_t), a_t, r(s_t, a_t), s_(t+1)} $ #comment("Store the transition in the replay pool")#d\
+    end for\
+    for each gradient step do#i\
+      $theta_i <- theta_i - lambda_Q accent(nabla, hat)_theta_i J_Q (theta_i) "for" i in {1,2}$ #comment("Update Q-function parameters")\
+      $phi.alt <- phi.alt - lambda_pi accent(nabla, hat)_phi.alt J_pi (phi.alt)$ #comment("Update policy parameters")\
+      $alpha <- alpha - delta accent(nabla, hat)_alpha J(alpha)$ #comment("Adjust temperature")\
+      $theta_1 <- tau theta_1 + (1 - tau) theta_1$ #comment("Update target network weights")#d\
+    end for#d\
+  end for\
+  *Output:* $theta_1, theta_2, phi.alt$ #comment("Optimised parameters")
+],
+caption: [Pseudocode of the Soft Actor Critic algorithm]
+) <SAC>
+
+SAC uses a parameterised soft Q-function $Q_theta (s_t, a_t)$ and a tractable policy $pi_phi.alt (a_t|s_t)$, whose
+parameters are $theta$ and $phi.alt$, respectively.
+The Q-function can be modelled as a neural network and trained to minimise the Bellman residual,
+which is the difference between the left and right side of the Bellman equation,
+thus quantifying how well the Q-function satisfies the Bellman equation:
+$ J_Q (theta) = EE_((s_t, a_t) ~ D) [1/2(Q_theta (s_t, a_t) - (r(s_t, a_t) + gamma EE_(s_(t+1)~p) [V_accent(theta, macron) (s_(t+1))]))^2] \, $
+where the value function is implicitly parameterised through the soft Q-function parameters via
+$V(s_t) = EE_(a_t~pi) [Q(s_t, a_t) - alpha log pi(a_t|s_t)]$, and it can be optimised with stochastic gradients:
+$ accent(nabla,hat)_theta J_Q (theta) = nabla_theta Q_theta (a_t, s_t) (Q_theta (s_t, a_t) - (r(s_t, a_t) + gamma (Q_(accent(theta, macron)) (s_(t+1) , a_(t+1)) - alpha log (pi_phi.alt (a_(t+1)|s_(t+1))))) . $ <stochastic_gradient>
+
+The update uses a target soft Q-function with parameters $accent(theta, macron)$ obtained as an exponential moving average of soft Q-function weights, which has been shown to stabilise training.
+
+//$ pi_"new" = arg min_(pi' in Pi) D_"KL" (pi'(dot.c|s_t) || (exp(1/alpha Q^(pi_"old") (s_t, dot.c)) / (Z^(pi_"old") (s_t)))) \, $
+//$ J_pi(phi.alt) = EE_(s_t~D) [D_("KL")(pi_phi.alt (dot.c|s_t) || (exp(Q_theta (s_t, dot.c))/(Z_theta (s_t)))] $
+
+The policy parameters, however, are learned by directly minimising the expected Kullback-Leibler divergence
+$ J_pi (phi.alt) = EE_(s_t~D) [ EE_(a_t~pi_phi.alt) [alpha log (pi_phi.alt (a_t|s_t)) - Q_theta (s_t, s_t)]] . $
+By reparameterising the policy using a neural network transformation \ $a_t = f_phi.alt (epsilon.alt_t: s_t)$, 
+where $epsilon.alt$ is an input noise vector, sampled from some fixed distribution the actor's function is now:
+$ J_pi (phi.alt) = EE_(s_t~D, epsilon.alt_t ~ cal(N))[alpha log pi_phi.alt (f_phi.alt (epsilon.alt; s_t)|s_t) - Q_theta (s_t, f_theta (epsilon.alt_t;s_t))] \, $
+where $pi_phi.alt$ is defined implicitly in terms of $f_phi.alt$.
+The gradient of the equation can be approximated:
+
+$ accent(nabla, hat)_phi.alt J_pi (phi.alt) = nabla_phi.alt alpha log (pi_phi.alt(a_t|s_t)) + (nabla_a_t alpha log (pi_phi.alt(a_t|s_t)) - nabla_a_t Q(s_t, a_t)) nabla_phi.alt f_phi.alt (epsilon.alt_t \; s_t) \, $ <sac_policy_gradient>
+where $a_t$ is evaluated at $f_phi.alt (epsilon.alt_t; s_t)$.
+
+Like TD3, SAC uses two Q-function with parameters $theta_i$, train them indepenently to optimise $J_Q (theta_i)$
+and use the minimum of both for the #link(<stochastic_gradient>)[stochastic gradient] and #link(<sac_policy_gradient>)[policy gradient].
+
+The gradient for the temperature $alpha$ are computed with the objective:
+$ J(alpha) = EE_a_(t~pi_t) [-alpha log pi_t (a_t|s_t) - alpha accent(cal(H), macron)] $
+
+SAC has been shown to be robust and sample efficient enough to perform in real-world robotic tasks like underactuated walking of a quadrupedal robot and
+even outperforms other state-of-art algorithms such as TD3 on several continuous control benchmarks.
+@haarnoja2018soft @haarnoja2018soft2
+
+// #pagebreak()
+// The soft value function (the actor) is trained to minimise the squared residual error
+// $ J_V(psi) = EE_((s_t~cal(D))) [1/2 ( V_Psi (s_t) - EE_(a_t~pi_phi.alt) [Q_theta (s_t, a_t) - log pi_phi.alt (a_t|s_t)])^2 ] \, $<eq>
+// where $cal(D)$ is the distribution of the replay buffer.
+// The gradients of the #link(<eq>)[previous equation] can be estimated with an unbiased estimator
+
+// $ nabla_(psi) J_V (psi) = nabla_(psi) V_(psi) (s_t) (V_(psi) (s_t) - Q_(theta) (s_t, a_t) + log pi_(phi.alt)(a_t|s_t)) \, $
+// where the actions are sampled from the policy and not from the replay buffer.
+// The soft Q-function is trained to minimise the Bellman residual, 
+// which is the difference between the left and right side of the Bellman equation,
+// thus quantifying how well the Q-function satisfies the Bellman equation:
+// $ J_Q(theta) = EE_((s_t, a_t)~cal(D)) [1/2 (Q_theta (s_t, a_t) - accent(Q, hat)(s_t, a_t))^2] \, $
+// with
+// $ accent(Q, hat)(s_t, a_t) = r(s_t, a_t) + gamma EE_(s_(t+1)~p)[V_(accent(Psi, macron))(s_t+1)] \, $
+// which can be optimised with stochastic gradients
+// $  accent(nabla, hat)_(theta) J_Q (theta) =  nabla_( theta) Q_( theta) (a_t, s_t) (Q_( theta) (s_t, a_t) - r(s_t, a_t) -  gamma V_(accent(psi, macron)) (s_(t+1))) \. $
+
+// The update utilises a target value network $V_(accent(psi, macron))$, where $accent(psi, macron)$
+// is an exponentially moving average of the value network weights.
+
+// Finally, the parameters of the policy are learned by minimising the expected Kullback-Leibler divergence:
+// $ J_pi(phi.alt) = EE_(s_t~D) [D_("KL")(pi_phi.alt (dot.c|s_t) || (exp(Q_theta (s_t, dot.c))/(Z_theta (s_t)))] $
