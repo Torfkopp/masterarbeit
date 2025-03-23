@@ -1,3 +1,5 @@
+== Artificial Intelligence
+
 Artificial Intelligence (AI) is a branch of computer science focused on creating systems capable of performing tasks that typically require human intelligence. These tasks include learning from experience, understanding natural language, recognising patterns, solving problems, and making decisions. AI encompasses a variety of techniques and approaches, including machine learning, neural networks, and natural language processing. @mccarthy2007artificial
 
 #figure(
