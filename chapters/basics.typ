@@ -6,3 +6,6 @@
 #include "basics/ai/ai.typ"
 #include "basics/ai/ml.typ"
 #include "basics/ai/drl.typ"
+#include "basics/ai/ea.typ"
+
+#include "basics/nas/nas.typ"
