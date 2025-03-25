@@ -8,4 +8,6 @@
 #include "basics/ai/drl.typ"
 #include "basics/ai/ea.typ"
 
-#include "basics/nas/nas.typ"
+#include "basics/nas/ea_in_rl.typ"
+#include "basics/nas/bo.typ"
+#include "basics/nas/nas_in_drl.typ"
