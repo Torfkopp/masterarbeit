@@ -1,7 +1,7 @@
 // https://www.frontiersin.org/journals/energy-research/articles/10.3389/fenrg.2023.1138446/full
 
 // https://www.researchgate.net/profile/Eric-Veith/publication/375229375_palaestrAI_A_Training_Ground_for_Autonomous_Agents/links/6543c0f2b6233776b7444a69/palaestrAI-A-Training-Ground-for-Autonomous-Agents.pdf
-
+== palaestrAI
 palaestrAI #footnote("https://gitlab.com/arl2/palaestrai") is used as the execution framework. It provides packages to implement or interface with agents, environments and simulators. The main concern of palaestrAI is the orderly and reproducible execution of experiment runs, the orchestration of the different parts of the experiment run, and the storage of results for later analysis.
 
 palaestrAI's Executor class acts as an overseer for a series of experiment runs. Each experiment run is a definition in YAML format. Run definitions are in most cases created by running arsenAI on an experiment definition. An experiment defines parameters and factors; arsenAI samples them from a space-filling design and outputs experiment run definitions that are concrete instantiations of the experiment's factors.
@@ -12,6 +12,11 @@ The core design decision that was made for palaestrAI is to favour loose couplin
 
 palaestrAI's loose coupling is realised using ZeroMQ @hintjens2011omq, which is a messaging system that allows for a reliable request-reply pattern, such as the majordomo pattern @gorski2022uml @hintjens2011omq. palaestrAI starts a message broker (MajorDomoBroker) before executing any other command; the modules then either use a majordomo client (sends a request and waits for the response), or the corresponding worker (receives requests, executes a task, returns a reply). Clients and workers subscribe to topics, which are automatically created the first time they are used. This loose coupling through a messaging bus allows the co-simulation with any control flow.
 
+#figure(
+  image("/images/palaestrai_schema.png", width: 70%),
+  caption: [Execution Schema of the software stack's execution @veith2023palaestrai]
+) <palaestrai_schema>
+
 In palaestrAI, the agent is divided into a learner (brain) and a rollout worker (muscle). The muscle acts within the environment. It uses a worker that subscribes to the muscle's identifier as a topic name. During the simulation, the muscle receives requests to act with the current state and reward information. Each muscle then first contacts the corresponding brain (acting as a client), provides state and reward, and requests an update of its policy. Only then does the muscle infer actions that are the response to the action request. In the case of DRL brains, the algorithm trains as experience is provided by the muscle. As many algorithms simply train based on the size of a replay buffer or a batch of experiences, there is no need for the algorithm to control the simulation.
 
 But even for more complex agent designs, this inverse control flow works perfectly fine. The reason stems directly from the MDP: Agents act in a state, st. Their action at triggers a transition to the state st+1. That is, a trajectory is always given by a state, followed by an action, which then leads to the follow-up state. Thus, it is the state that triggers the agent's action; the state transition is the result of applying an agent's action to the environment. A trajectory always starts with an initial state, not an initial action, i.e. τ = (s0, a0, ...). Thus, the control flow as implemented by palaestrAI is actually closer to the scientific formulation of DRL than the Gym-based control flow.
@@ -20,10 +25,9 @@ In palaestrAI, the SimulationController represents the control flow. It synchron
 
 Finally, palaestrAI provides facilities for storing results. Currently, SQLite is supported for smaller and PostgreSQL for larger simulation projects, via SQLalchemy #footnote("https://www.sqlalchemy.org/, retrieved: 2025-01-04"). There is no need to provide a special interface, and agents, etc. do not need to take care of results storage. This is thanks to the messaging bus: Since all relevant data is exchanged via message passing (e.g. sensor readings, actions, rewards, objective values, etc.), the majordomo broker simply forwards a copy of each message to the results storage. This way, the database contains all relevant data, from the experiment run file through the traces of all phases to the “brain dumps,” i.e. the saved agent policies.
 
-// Figure 3 shows an excerpt of the palaestrAI software stack with the packages and classes mentioned until now.
-// FIGURE 3
-// www.frontiersin.org
-
-// FIGURE 3. The palaestrAI core framework.
+#figure(
+  image("/images/palaestrai_uml.png", width: 100%),
+  caption: [Most important classes in the palaestrAI software stack @veith2023palaestrai]
+)
 
 arsenAI's and palaestrAI's concept of experiment run phases allows for flexibility in offline learning or adversarial learning through autocurricula @baker2019emergent. Within a phase, agents can be employed in any combination and with any sensor/actuator mapping. In addition, agents -- specifically, brains -- can load “brain dumps” from other, compatible agents. This enables both offline learning and autocurricula within an experiment run in distinct phases.

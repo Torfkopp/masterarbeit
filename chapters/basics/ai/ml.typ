@@ -49,7 +49,7 @@ The stochastic process ${ w_t, t=1, ...}$ depends on the examples being randomly
 It is hoped that the SGD calculation behaves like the one in gradient descent. 
 Because the stochastic algorithm does not need to remember which examples were visited in previous iterations, it can process examples on the fly in a deployed system. @bottou2010large
 
-=== Adaptive Moment Estimation
+=== Adaptive Moment Estimation <adam>
 //https://en.wikipedia.org/wiki/Stochastic_gradient_descent#Adam
 Adaptive Moment Estimation (Adam) is an optimisation algorithm that combines the benefits of two other popular optimisation algorithms: 
 AdaGrad (adaptive gradient algorithm) @duchi2011adaptive, and RMSProp (Root Mean Square Propagation) @tieleman2012lecture,

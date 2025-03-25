@@ -13,7 +13,7 @@ making it necessary to run the NAS in parallel.
   caption: [Adding NAS to the palaestrAI cycle],
 ) <Concept>
 
-On the left side of @Concept, the basic cycle of palaestrAI is shown.
+On the left side of @Concept, a simplified version of @palaestrai_schema with focus on the agent is shown.
 The agent's muscle suggests actions to take to the environment, 
 which in result returns a reward to the agent's brain.
 In the brain the learning process takes places which changes the agent's network.
