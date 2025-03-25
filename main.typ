@@ -38,18 +38,20 @@
 #include "chapters/basics/basics.typ"
 
 #include "chapters/stack/stack.typ"
+#include "chapters/concept.typ"
+#include "chapters/implementation.typ"
+#include "chapters/experiment.typ"
 
-// #include "chapters/concept.typ"
-// #include "chapters/implementation.typ"
-// #include "chapters/experiment.typ"
 // #include "chapters/evaluation.typ"
 // #include "chapters/problems.typ"
 // #include "chapters/conclusion.typ"
 
-#pagebreak()
-#include "chapters/appendix.typ"
+
 
 #pagebreak()
 #bibliography("refs.bib")
+
+#pagebreak()
+#include "chapters/appendix.typ"
 
 #include "template/erklaerung.typ"

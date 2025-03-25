@@ -109,3 +109,37 @@
     // [N_ITER], [200],
   )
 )
+
+#let algorithms = (
+  table(
+    columns: (auto, auto, auto, auto,),
+    align: left,
+    table.header(
+      [*Algorithm*],
+      [*Paper*],
+      [*Usable Impl.?*],
+      [*Usable for*]
+    ),
+    [GA-DRL], [@sehgal2019deep @sehgal2023deep], [#sym.checkmark], [Hyperparameter],
+    [NEAT], [@NEAT], [#sym.checkmark], [Network + Weights],
+    [HyperNEAT], [@stanley2009hypercube], [#sym.checkmark], [Network + Weights],
+    [PBT], [@jaderberg2017population], [#sym.checkmark], [Hyperparameter],
+    [FIRE-PBT], [@dalibard2021faster], [#sym.crossmark], [Hyperparameter],
+    [SEARL], [@franke2020sample], [#sym.checkmark], [Hyperparameter],
+    [AAC], [@grigsby2021towards], [#sym.crossmark], [Hyperparameter],
+    [OMPAC], [@elfwing2018online], [#sym.crossmark], [Hyperparameter],
+    [BO-GA/BO-DE/BO-ES], [@vincent2023improved], [#sym.circle.stroked Pseudocode], [Hyperparameter],
+    [CMA-ES], [@loshchilov2016cma], [#sym.checkmark], [Hyperparameter],
+    [ESGD], [@cui2018evolutionary], [#sym.circle.stroked Pseudocode], [Network],
+    [WOA], [@mirjalili2016whale], [#sym.checkmark], [Hyperparameter],
+    [ALF], [@ALF], [#sym.crossmark], [Network + Weights],
+    [DEHB], [@awad2021dehb], [#sym.checkmark], [Hyperparameter],
+    [EARL, CERL, \ ERL, GEATL], [@moriarty1999evolutionary @khadka2018evolutionary \ @khadka2019collaborative @ZHU2023126628], [#sym.crossmark], [Hyperparameter],
+    [ProxylessNAS], [@cai2018proxylessnas], [#sym.checkmark], [Network],
+    [Minimal RL], [Based on @zoph2016neural], [#sym.checkmark], [Network],
+    [Bayesian Opt.], [i.e. @movckus1975bayesian], [#sym.checkmark], [Parameter],
+    [Smash], [@brock2017smash], [#sym.checkmark], [Network],
+    [AutoDL], [GitHub #footnote("https://github.com/D-X-Y/AutoDL-Projects")], [#sym.checkmark], [Network],
+    [NASLib], [GitHub #footnote("https://github.com/automl/NASLib")], [#sym.checkmark], [Network],
+  )
+)

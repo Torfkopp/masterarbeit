@@ -10,9 +10,12 @@ In every scenario, an AI agent is tasked with keeping the power grid stable.
 A reactive power controller, realised as a muscle in palaestrAI and thus named reactive power muscle (RPM), is also present in every scenario.
 
 === 1. Scenario: CIGRE
+
+#figure(image("/images/cigre.png", width: 80%), caption: [CIGRE benchmark grid used @rudion2006cigre]) <cigre>
+
 This scenario uses the CIGRE Medium Voltage grid model of @rudion2006cigre, also depicted in @cigre.
-The 'defender' agent is given the ARL defender objective #footnote("https://gitlab.com/midas-mosaik/midas-palaestrai/-/blob/main/src/midas_palaestrai/arl_defender_objective.py"), which considers the overall mean voltage of the grid, the agent's voltage sensor values,
-as well as the number of busses in service to calculate the reward.
+The 'defender' agent is given the ARL defender objective #footnote("https://gitlab.com/midas-mosaik/midas-palaestrai/-/blob/main/src/midas_palaestrai/arl_defender_objective.py"), which adds the overall mean voltage of the grid, the agent's voltage sensor values,
+as well as the number of buses in service together, each with a coefficient of $1/3$ by default, to calculate the reward.
 
 === 2. Scenario: CIGRE + COHDARL
 In this scenario, the grid model used is the same as in the first scenario.
@@ -20,15 +23,18 @@ The difference to the first scenario is the usage of COHDARL.
 COHDARL is a distributed heuristic that applies self-organization mechanisms to optimize a global, shared objective.
 It is used to optimize the scheduling of energy resources in virtual power plants and
 operates by representing each distributed energy resource as a self-interested agent, allowing both global scheduling objectives and individual local objectives to be efficiently integrated into a distributed coordination paradigm @hinrichs2017distributed.
-Consistent with the usage of COHDARL, the 'defender' agent is given the COHDARL defender objective #footnote("https://gitlab.com/midas-mosaik/midas-palaestrai/-/blob/main/src/midas_palaestrai/cohdarl_defender_objective.py"), whose reward is calculated based on the global objective of COHDARL.
+Consistent with the usage of COHDARL, the 'defender' agent is given the COHDARL defender objective #footnote("https://gitlab.com/arl-experiments/cohdarl/-/blob/main/src/cohdarl/cohdarl_objective.py"), whose reward is based on the global objective of COHDARL. The objective calculates its reward just like the ArlDefenderObjective, just with the addition of the cohdarl's power objective and a coefficient of $1/4$ for each of the summands.
 
 == Parameters
 
 The experiment's parameters are shown in @exp_paras and the whole experiment file can be found #link("https://gitlab.com/arl2/harl/-/blob/nas/src/harl/sac/nas/experiments/palaestrai-runfiles/NAS-Exp-Short.yml")[in the 'nas'-branch of harl]. //"https://gitlab.com/arl2/harl/-/blob/nas/src/harl/sac/nas/experiments/NAS-Experiment_run-0.yml?ref_type=heads"
 Every scenario is run for ten episodes, each representing a hundred days, which is equivalent to 8,640,000 seconds. //one year, which is equivalent to 31,536,000 seconds.
 A step size of 900 seconds is used, resulting in 9,600 steps per episode or 28,800 steps for the whole simulation. //in 35,040
-As reward function, the ExtendedGridHealthReward #footnote("https://gitlab.com/midas-mosaik/midas-palaestrai/-/blob/main/src/midas_palaestrai/rewards.py#L88"),
+As reward function of the environment, the ExtendedGridHealthReward #footnote("https://gitlab.com/midas-mosaik/midas-palaestrai/-/blob/main/src/midas_palaestrai/rewards.py#L88"),
 a reward based on the grid's "healthiness" -- meaning the deviation from the best possible status --, is used.
+It is a vectorised reward giving complete information about the net by encompassing the
+minimum, maximum, mean, median, and standard deviation of the values of the voltage bands and line loads as well as the number of 
+buses in service and out of service. Each value is provided as a separate reward information with a corresponding id.
 
 The parameters for SAC shown in @sac_paras are mostly kept to the default values of the implementation.
 In the baseline experiment, the muscle's `start_steps`-parameter, 

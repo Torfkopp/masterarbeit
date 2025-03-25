@@ -1,3 +1,4 @@
+#import "/images/diagrams.typ": feed_loop, neurons
 == Deep Reinforcement Learning
 
 One branch of machine learning (@ai_venn) is the previously mentioned Deep Reinforcement Learning (DRL), which combines deep learning with reinforcement learning in order to enhance the capabilities of the learning algorithm.
@@ -9,7 +10,14 @@ One branch of machine learning (@ai_venn) is the previously mentioned Deep Reinf
 Neurons are either part of the input, hidden, or output layer. The former layer gets the data given to the network, whilst the latter layer outputs the result of the network. The hidden layers are for the calculation of the result and are not seen by the user of the network, thus the name 'hidden'. The amount of layers in a network is referred to as 'depth' of the network, which is also the reason for the name 'deep learning'. \
 Each neuron has at least one input as well as one output connection. The output of the neuron is based on its input(s) and its inherent function. Each connection between two neurons holds a weight by which the output of the one neuron is multiplied with and the result then is given to the other neuron as input. Changing the weights of the network leads to a change in the result; fine-tuning weights to get a desirable result for every input is the goal of the deep learning algorithms. @anderson1995introduction
 
-#figure(image("/images/neuron_math.PNG", width: 30%), caption: [A representation of single hidden neuron with its inputs @heaton2011introduction]) <neuron_math>
+#figure(
+  scale(70%, reflow: true)[#neurons],
+  //image("/images/neuron_math.PNG", width: 30%), 
+  caption: [A representation of single hidden neuron with its inputs]
+) <neuron_math>
+
+The node H1 in @neuron_math has three inputs: I1, I2, and B1. I1 and I2 are simply the input values that the neural network was provided with to compute the output.
+B1 is a bias neuron and thus always 1. Bias neurons allow the output of the activation function to be shifted to the left or right on the x-axis.
 
 The formula to calculate a neurons output generally is:
 $ h_1 = A(sum_(c=1)^n (i_c * w_c) ) $
@@ -33,7 +41,9 @@ It has been shown that "multilayer feedforward networks are universal approximat
 
 As mentioned in @machine_learning, 'Reinforcement Learning' is one of the learning paradigms of machine learning. In Reinforcement Learning, the agent learns to make decisions by performing actions in an environment to maximise some notion of cumulative reward. Reinforcement learning is inspired by behavioural psychology and involves the agent learning from the consequences of its actions, rather than from being told explicitly what to do. The agent receives feedback in the form of rewards or penalties, which it uses to adjust its actions to achieve the best long-term outcomes.
 
-#figure(image("/images/rl_loop.png", width: 50%), caption: [The feedback-loop of reinforcement learning algorithms #footnote("https://commons.wikimedia.org/wiki/File:Reinforcement_learning_diagram.svg")]) <loop>
+#figure(
+  scale(70%, reflow:true)[#feed_loop], 
+  caption: [The feedback-loop of reinforcement learning algorithms)]) <loop>
 
 In @loop, the general feedback loop for a reinforcement learning algorithm is illustrated.
 The environment is in a state, which is observed by the agent. The agent then decides upon an action, which is executed in the environment. The environment then transitions to a new state and gives feedback to the agent in the form of a reward. The agent uses this feedback to adjust its policy, which is the strategy it uses to decide upon actions. By adjusting the policy, the agent learns to take actions that maximise the rewards received. @puiutta2020explainable

@@ -125,3 +125,18 @@
     edge(<critic>, <agent>, "-|>", label: "Rewards", label-side: center),
   )
 )
+
+#let neurons = (
+  diagram(
+    debug: false,
+    node-stroke: black,
+    mark-scale: 1.5,
+    node((0,0), "I1", shape: circle, width: 40pt, name:<i1>),
+    node((0,1), "I2", shape: circle, width: 40pt, name:<i2>),
+    node((0,2.5), "B1", shape: circle, width: 40pt, name:<b1>),
+    node((2,0.5), "H1", shape: circle, width: 40pt, name:<h1>),
+    edge(<i1>, <h1>, "-|>", label: "w1"),
+    edge(<i2>, <h1>, "-|>", label: "w2"),
+    edge(<b1>, <h1>, "-|>", label: "w3", label-side: right),
+  )
+)
