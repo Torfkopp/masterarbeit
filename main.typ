@@ -35,14 +35,10 @@
 #set page(numbering: "1")
 
 #include "chapters/introduction.typ"
-#include "chapters/basics.typ"
+#include "chapters/basics/basics.typ"
 
-//#include "chapters/background.typ"
-//#include "chapters/related_work.typ"
+#include "chapters/stack/stack.typ"
 
-
-
-// #include "chapters/stack.typ"
 // #include "chapters/concept.typ"
 // #include "chapters/implementation.typ"
 // #include "chapters/experiment.typ"
