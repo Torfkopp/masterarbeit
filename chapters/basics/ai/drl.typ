@@ -54,7 +54,7 @@ This approach can also be brought to the energy sector.
 A survey @hao2022adversarial shows the possibilities of attacking machine learning agents deployed in smart grids with adversarial machine learning.
 @panimproving use the adversarial attacker to train and improve the robustness of their reinforcement learning agent controlling the power grid.
 A highly related work is @fischer2018adversarial, in which adversarial resilience learning (ARL) is introduced;
-agents take the roles of attackers or defenders that aim at worsening or improving---or keeping, respectively---
+agents take the roles of attackers or defenders that aim at worsening or improving -- or keeping, respectively --
 defined performance indicators of the system, e.g. a simulated power system, and learn to adapt their strategies to the opponent's actions.
 
 ==== Bellman Equation
@@ -174,7 +174,7 @@ to quantify how well or poor the model has performed and to update the parameter
 $ cal(L)(theta) = EE_((s,a,r,s')~cal(D))[(r + gamma max_a' Q_"target" (s', a'; theta_i^-) - Q(s, a; theta))^2] $
 
 in which $gamma$ is the discount factor determining the agent's horizon, $theta_i$ are
-the parameters---or rather weights---of the Q-network at iteration $i$ and $theta_i^-$ are the network
+the parameters -- or rather weights -- of the Q-network at iteration $i$ and $theta_i^-$ are the network
 parameters used to compute the target at iteration $i$.
 The target network's weights $theta_i^-$ held fixed between individual updates and are only
 updated with the Q-network's parameters ($theta_i$) at fixed intervalls. @mnih2015human

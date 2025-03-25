@@ -28,8 +28,8 @@ DRL-based agents for many tasks related to power system
 operations - e.g. voltage control @diao2019autonomous - but the approach of using
 of using DRL for general resilient operation is relatively new.
 @fischer2018adversarial @veith2019analyzing.
-DRL - the idea of an agent with sensors and
-and actuators that learns by trial and error - is at the heart of many
+DRL -- the idea of an agent with sensors and
+and actuators that learns by trial and error -- is at the heart of many
 many notable successes, such as MuZero @schrittwieser2020mastering, with modern algorithms such as
 such as Twin-Delayed DDPG (TD3) @fujimoto2018addressing, Proximal Policy Gradient (PPO)
 Policy Gradient (PPO) @schulman2017proximal, and Soft Actor Critic (SAC) @haarnoja2018soft

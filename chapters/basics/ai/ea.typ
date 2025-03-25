@@ -92,7 +92,7 @@ To prevent the genome with the new structure from being eliminated too quickly, 
 The population is divided into species based on their topological similarity, which
 can be measured by the number of disjoint $D$ and excess $E$ genes and the average weight difference for matching genes $overline(W)$:
 $ delta = (c_1 dot E)/ N + (c_2 dot D)/N + c_3 dot overline(W) . $
-The coefficients $c_1$, $c_2$, and $c_3$ are constants that determine the importance of the three factors and the factor $N$---the  number of genes in the larger genome---normalises for genome size.
+The coefficients $c_1$, $c_2$, and $c_3$ are constants that determine the importance of the three factors and the factor $N$ -- the  number of genes in the larger genome -- normalises for genome size.
 
 Genomes are tested for compatibility with a species calculating their $delta$ to a random member of the species and if the $delta$ is below a threshold, the genome is added to the species. Genomes are placed into the first species that fits.
 
