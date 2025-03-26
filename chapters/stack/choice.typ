@@ -27,7 +27,14 @@ and could not be done without influencing the functionality of the algorithm.
 Despite originally being for image classification as well,
 the minimal RL implementation could be adapted due to its simplicity.
 
-Finally, Bayesian Optimisation was chosen over the other hyperparameter optimisation algorithms,
+Finally, Bayesian optimisation was chosen over the other hyperparameter optimisation algorithms,
 due to "Bayesian Optimisation" being a household name in the field for many years now
 and having a very popular maintained implementation #footnote("https://github.com/bayesian-optimization/BayesianOptimization") that is simple to integrate available.
 
+Thus, three algorithms with different approaches to optimisation were chosen:
+an evolutionary algorithm, a reinforcement learning algorithm, and a sequential design strategy.
+
+The evolutionary algorithm NEAT tries to find the best topology and weights for the neural network.
+The other two algorithm try to find the best architecture for the network without regards to the weights;
+the reinforcement learning algorithm by trying to find the best set of parameters that represent the architecture,
+and the Bayesian optimisation algorithm by optimising the black-box function describing the net's topology.

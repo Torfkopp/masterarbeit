@@ -26,12 +26,22 @@
   strong(it)
 }
 #outline(indent: auto)
-#pagebreak()
 
-#outline(title: [List of figures], target: figure)
+#{
+  set footnote.entry(separator: none)
+  show footnote.entry: hide
+  show ref: none
+  show footnote: none
+  
+  pagebreak()
+  outline(
+    title: [List of figures], target: figure,
+  )
+}
 #pagebreak()
 
 #counter(page).update(1)
+#counter(footnote).update(0)
 #set page(numbering: "1")
 
 #include "chapters/introduction.typ"
@@ -42,8 +52,8 @@
 #include "chapters/implementation.typ"
 #include "chapters/experiment.typ"
 
-// #include "chapters/evaluation.typ"
-// #include "chapters/problems.typ"
+#include "chapters/evaluation.typ"
+#include "chapters/problems.typ"
 // #include "chapters/conclusion.typ"
 
 

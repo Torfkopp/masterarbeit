@@ -48,9 +48,9 @@ to the current task. Both cases can result in a subpar choice of a
 architecture, thus leading to an unsatisfying result.
 Additionally, because the agents are part of a critical infrastructure,
 the choice of architecture has to be reasoned upon.
-\
+
 This leads to this work's hypothesis that 
-the choice of a neural network's architecture can be automated with a NAS algorithm, which
+choosing a neural network's architecture can be automated with a NAS algorithm, which
 does this task in a way that improves upon the performance of a user picked architecture
 in a reasonable amount of time.
 

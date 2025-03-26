@@ -1,18 +1,36 @@
-= Further work
+= Evaluation and Further work
 
-The results of the experiments show (good/bad/meh) ...
-(Despite that/Thus) there are several opportunities to improve upon the NAS methods ...
+The two experiments show contrary results:
+Whilst the first experiment shows a clear advantage of the Bayesian optimisation method
+with a performance of the reinforcement learning approach and NEAT being similar to that of the baseline,
+the second experiment shows a clear loss of all the NAS methods compared to the baseline.
 
-One of those potential improvements is NEAT's network;
-the implementation of the NEAT algorithm uses a unique feed forward network created after NEAT's genomes.
-Because it is based on torch, it is possible to use it in the harl framework.
-However, due to the difference in structure compared to the network used in harl's normal SAC implementation,
-it is not possible to continue with a normal training process after NEAT has finished.
-This network difference is also presumed to be the reason for a (at the moment of writing)
-unidentifiable and untraceable problem with the "CIGRE + COHDARL"-experiment:
-an experiment run started finishes right after the first step, 
-whilst the same experiment with other NAS methods run the whole distance as expected.
-This problem is still under investigation, but was circumvented by reducing the amount of actuators the agent has control over.
+In neither the first nor the second experiment the NAS methods seem to be learning, 
+as the rewards are not increasing over time.
+During the first experiment, the baseline is not learning either, which may be
+the reason for the NAS methods' performance being similar to the baseline's.
+Since the baseline is learning in the second experiment, it can be taken into consideration
+that the first experiment was not working as intended.
+
+Thus the results of the second experiment may be more reliable than the first experiment's results.
+As both the RL method and the BO method should be using SAC's normal learning process
+-- which is working as intended as seen in the baseline's case --
+after the NAS methods have finished at around two thirds of the phase time,
+the results of the second experiment are a clear indicator that parts of the NAS methods might not be working as intended.
+
+... Entweder NAS Methods are not suitable for the problem or
+ich habe scheiße gebaut oder palaestrai etc. hat scheiße gebaut,
+oder erst nützlich ab längerer Laufzeit
+
+The lower general reward for NEAT in the second experiment is due to a reduced amount of actuators that the agent has control over.
+This was done to circumvent a problem occurring when using the NEAT agent with all actuators:
+starting the experiment leads to palaestrAI finishing the simulation right after the first step,
+whilst the same experiment with other or no NAS methods run the whole distance as expected.
+This problem and its origins are still under investigation, but is presumed to be due to the network structure of the NEAT implementation used.
+Pytorch-NEAT uses a unique feed forward network structure, which, since the implementation uses torch as library, 
+could be implemented into the harl framework.
+However, this network structure is not the same as the network structure used in the SAC implementation of harl
+and thus it is not possible to continue with a normal training process after NEAT has finished.
 If further work on the NEAT implementation is deemed to be worth the while,
 a possible starting point could be the change to a network structure similar to the one used in harl's SAC implementation.
 Besides the possible erasure of this and similar problems and the possibility of a subsequent training of the network,
@@ -20,7 +38,9 @@ this also increases the reusability of the network.
 Despite the advantages, this adaption is a non-trivial task and possibly requires a lot of work,
 because one has to make sure the conversion of NEAT's genomes functions as intended and like the current unique network structure.
 
-The bayesian optimisation approach to the NAS has a big room for improvement, as well.
+... Verbinden
+
+The Bayesian optimisation approach to the NAS has a big room for improvement, as well.
 Currently, the devised black box function is rather simple by having six parameters,
 which represent the amount of features in the layer, and can assume values between 0, in which case no layer is employed, and 256.
 This leads to a network with six layers each having 128 features on average, which is a rather big network.

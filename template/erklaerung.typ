@@ -6,8 +6,8 @@ Hiermit versichere ich an Eides statt, dass ich diese Arbeit selbstständig verf
 
 
 #v(20%)
-#emph[Unterschrift]\
-//#image("/images/Unterschrift.png", width: 50%)
+// #emph[Unterschrift]\
+#image("/images/Unterschrift.png", width: 50%)
 #v(-2em)
 #box(width: 50%, repeat[\_])
 #set text(10pt)
