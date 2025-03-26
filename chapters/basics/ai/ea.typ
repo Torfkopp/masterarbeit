@@ -22,7 +22,7 @@ These algorithms could change the topology of the neural network as well, i.e. b
 The addition of the topolgy made the evolutionary algorithms more flexible and powerful.
 
 #figure(
-  image("/images/gadiagram.svg"),
+  image("/images/basics/gadiagram.svg"),
   caption: [A diagram showing the general steps of a evolutionary algorithms #footnote("https://www.strong.io/blog/evolutionary-optimization")]
 )
 
