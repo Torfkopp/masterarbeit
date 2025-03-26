@@ -52,7 +52,7 @@ Compared to the traditional genetic algorithms, NEAT has three key differences:
 
 #heading(outlined: false, bookmarked: false, level: 5, numbering: none)[Genetic Encoding]
 #figure(
-  image("/images/neat1.png", width: 70%),
+  image("/images/basics/neat1.png", width: 70%),
   caption: [The scheme NEAT uses for its genomes @NEAT]
 ) <neat1>
 The individuals in NEAT are called genomes, based upon the biological term, which is the complete genetic information of an organism.
@@ -63,7 +63,7 @@ The weight mutation in NEAT functions as in any neuroevolution system, with each
 The structural mutation can occur in two ways depicted in @neat2:
 
 #figure(
-  image("/images/neat2.png", width: 70%),
+  image("/images/basics/neat2.png", width: 70%),
   caption: [The two ways of structural mutation in NEAT @NEAT]
 ) <neat2>
 
@@ -77,7 +77,7 @@ Whenever a new gene appears through structural mutation, the global innovation n
 @neat3 shows the crossover of two genomes:
 
 #figure(
-  image("/images/neat3.png", width: 70%),
+  image("/images/basics/neat3.png", width: 70%),
   caption: [The matching of genes during crossover in NEAT; \ The innovation number is shown on top of each parent @NEAT]
 ) <neat3>
 

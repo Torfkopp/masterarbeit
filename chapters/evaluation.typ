@@ -1,148 +1,67 @@
-= Results
+= Evaluation and Further work
 
-The outputs of the two experiments were saved to a database
-and visualised with Grafana #footnote("https://grafana.com/"), 
-an open-source platform for monitoring, visualising, and analysing data from various sources
-by allowing users to create interactive dashboards and graphs to track metrics, logs, and other data in real-time.
+The two experiments show contrary results:
+Whilst the first experiment shows a clear advantage of the Bayesian optimisation method
+with a performance of the reinforcement learning approach and NEAT being similar to that of the baseline,
+the second experiment shows a clear loss of all the NAS methods compared to the baseline.
 
-== 1#super[st] Experiment: Cigre
+In neither the first nor the second experiment the NAS methods seem to be learning, 
+as the rewards are not increasing over time.
+During the first experiment, the baseline is not learning either, which may be
+the reason for the NAS methods' performance being similar to the baseline's.
+Since the baseline is learning in the second experiment, it can be taken into consideration
+that the first experiment was not working as intended.
 
-The experiment of the first scenario took 11 hours and 18 minutes to finish.
+Thus the results of the second experiment may be more reliable than the first experiment's results.
+As both the RL method and the BO method should be using SAC's normal learning process
+-- which is working as intended as seen in the baseline's case --
+after the NAS methods have finished at around two thirds of the phase time,
+the results of the second experiment are a clear indicator that parts of the NAS methods might not be working as intended.
 
-#figure(
-    image("/images/results/cigre_agent_rewards.png", width: 100%),
-    caption: [Rewards of the agents over time in the 1#super[st] experiment.]
-) <cigre_rewards>
+Even though the software stack around palaestrAI went through some changes during the time of the experiments,
+it stands to reason that the implementation of the NAS methods into the harl framework may have some underlying problems
+and unintended behaviour.
+The possibility of the NAS methods simply not being able to handle the task at hand should also be taken into consideration.
+Further investigation and experimentation is needed to clarify the reasons for the NAS methods' performance.
 
+The reason for the lower overall reward for NEAT in the second experiment is known;
+it is due to the reduced number of actuators over which the agent has control.
+This was done to circumvent a problem occurring when using the NEAT agent with all actuators:
+starting the experiment leads to palaestrAI finishing the simulation right after the first step,
+whilst the same experiment with other or no NAS methods run the whole distance as expected.
+This problem and its origins are still under investigation, but is presumed to be due to the network structure of the NEAT implementation used.
+Pytorch-NEAT uses a unique feed forward network structure, which, since the implementation uses torch as library, 
+could be implemented into the harl framework.
+However, this network structure is not the same as the network structure used in the SAC implementation of harl
+and thus it is not possible to continue with a normal training process after NEAT has finished.
+If further work on the NEAT implementation is deemed to be worth the while,
+a possible starting point could be the change to a network structure similar to the one used in harl's SAC implementation.
+Besides the possible erasure of this and similar problems and the possibility of a subsequent training of the network,
+this also increases the reusability of the network.
+Despite the advantages, this adaption is a non-trivial task and possibly requires a lot of work,
+because one has to make sure the conversion of NEAT's genomes functions as intended and like the current unique network structure.
 
-@cigre_rewards shows the rewards of the agents over time; the higher the rewards are, the better the agent is performing.
-The four phases of the experiment with their corresponding active NAS method are marked:
-the first phase was the NEAT phase, followed by RL, BO, and then the baseline.
-Apparent is the phase of the BO method, whose rewards are peaking several times a cut above the other three's
-highest rewards. The lows also tend to be higher than the other methods' lows.
-The graphs of the other three methods are highly similar, with their highs and lows being around the same values.
-Except for some time between 17:00 and 17:30, which resembles the other three methods' performance,
-the BO method's performance looks to be better than the other three methods' performance.
-All methods do not seem to learn as the rewards are not increasing over time.
+The Bayesian optimisation approach to the NAS has big room for improvement, as well.
+Currently, the devised black box function is rather simple by having six parameters,
+which represent the amount of features in the layer, and can assume values between 0, in which case no layer is employed, and 256.
+This leads to a network with six layers each having 128 features on average, which is a rather big network.
+By changing the black box function to a more complex one and/or one that is more tuned to the problem at hand,
+the performance of this NAS method is believed to be greatly improved upon.
 
-#figure(
-    table(
-        columns: 4,
-        align: (left, center, center, right),
-        table.header(
-            [*Method*], [*First Step*], [*Last Step*], [*Total Duration*]
-        ),
-        [NEAT], [10:33:52], [12:55:42], [2:21:50],
-        [RL], [12:56:28], [15:07:48], [2:11:20],
-        [BO], [15:08:41], [18:39:42], [3:31:01],
-        [Base], [18:40:30], [21:52:44], [3:12:14],
-    ),
-    caption: [The duration of each phase in the 1#super[st] experiment.]
-) <cigre_duration>
+Other opportunities for enhancement of the NAS methods' performances is the optimisation of the parameters.
+At the moment, the parameters are mostly set to the default values of the implementations;
+Consultation of literature or usage of common practices like computational methods to optimise 
+the parameters for the specific task could lead to a better performance of the NAS methods;
+which is the like the premise of this thesis, just one level further.
 
-Another information extractable from the graph is each phases duration, which is shown in @cigre_duration.
-It shows that NEAT was the fastest of the methods, followed by RL, the baseline, and BO.
-The difference between RL's duration and BO's duration is 1:19:41, in other words, 
-takes the BO agent around 60% longer than the RL agent.
-Both RL and NEAT are faster than the baseline by 1 hour 54 seconds (around 32% faster) and 50:24 minutes (ca. 26%), respectively.
-BO is slower than the baseline by 18:47 minutes (around 10% slower).
+At the moment, the parameters to determine the duration of the NAS methods are either set
+by the user or left to default.
+For the experiments these values were set manually so that the methods end before the experiment finishes.
+This adaption to the experiment's length could also be automated,
+reducing the amount of setting leaving the user to only activate the NAS method.
 
-#figure(
-    image("/images/results/cigre_sperm.png", width: 100%),
-    caption: [Violin plots of each method's objective scores in the 1#super[st] experiment.]
-) <cigre_violin>
-
-The violin plots in @cigre_violin show the distribution of the objective scores -- or the agent rewards -- of each method
-with the minimum, maximum, and median values of each method listed explicitly in the @cicre_objective below.
-
-#figure(
-    table(
-        columns: 4,
-        align: (left, center, center, center),
-        table.header(
-            [*Method*], [*Min*], [*Max*], [*Median*],
-        ),
-        [BO], [0.6244281], [0.770436], [0.7174087],
-        [NEAT], [0.6193798], [0.7467596], [0.709123],
-        [Base], [0.6199054], [0.7521687], [0.709123],
-        [RL], [0.6193798], [0.7467596], [0.709123],
-    ),
-    caption: [The minimum, maximum, and median objective scores of each method in the 1#super[st] experiment.]
-) <cicre_objective>
-
-Both @cigre_violin and @cicre_objective reinforce what is seen in @cigre_rewards:
-the BO method is a cut above the rest and has the highest median, maximum, and minimum objective scores,
-whilst the other three methods all have similar values for these three metrics.
-
-The hypothesis made at the beginning of this thesis is that
-a NAS algorithm can improve upon the performance of a user-picked architecture in a reasonable amount of time.
-In regards to this experiment, the hypothesis is true.
-All three NAS methods have either similar performance as the baseline in less time (NEAT, RL)
-or a better performance with a slightly higher, but still reasonable, time investment (BO).
-
-
-== 2#super[nd] Experiment: Cigre + Cohdarl
-
-Due to the increased amount of seconds to simulate for the second scenario, the experiment took 24 hours and 21 minutes to finish.
-
-#figure(
-    image("/images/results/cohdarl_agent_rewards.PNG", width: 100%),
-    caption: [Rewards of the agents over time in the 2#super[nd] experiment.]
-) <cohdarl_rewards>
-
-In the graph of @cohdarl_rewards, the four phases of the experiment are marked with the active NAS method:
-BO, RL, NEAT and lastly the baseline.
-Contrary to the first experiment, BO as well as RL and NEAT perform way worse than the baseline.
-BO's, RL's, and the baseline's rewards start at a similar level, but only the baseline's rewards increase over time -- meaning the agent learns.
-Interestingly, the rewards of both NAS methods are getting worse with the BO agent's rewards slightly deteriorating over time
-and the RL agent's rewards visibly plummeting slightly after the half-way mark of its phase.
-The NEAT agent's rewards are the lowest of all four methods; they start at a lower level and do not increase visibly over time.
-
-#figure(
-    table(
-        columns: 4,
-        align: (left, center, center, right),
-        table.header(
-            [*Method*], [*First Step*], [*Last Step*], [*Total Duration*]
-        ),
-        [BO], [13:30:11], [23:27:42], [9:57:31],
-        [RL], [23:29:07], [04:32:07], [5:03:00],
-        [NEAT], [04:33:13], [06:47:43], [2:14:30],
-        [Base], [06:48:34], [13:51:17], [7:02:43],
-    ),
-    caption: [The duration of each phase in the 2#super[nd] experiment.]
-) <cohdarl_duration>
-
-The durations of the phases in the 2#super[nd] experiment are shown in @cohdarl_duration.
-NEAT was the fastest of the methods by a large margin, followed by RL and the baseline.
-BO was the slowest of the methods, taking almost 3 hours longer than the baseline (40% longer).
-Both RL and NEAT were faster than the baseline by 1 hours 59 minutes 43 seconds (around 30% faster) and 4 hours 48 minutes (around 68%), respectively.
-
-#figure(
-    image("/images/results/cohdarl_spear.PNG", width: 100%),
-    caption: [Violin plots of each method's objective scores in the 2#super[nd] experiment.]
-) <cohdarl_violin>
-
-#figure(
-    table(
-        columns: 4,
-        align: (left, center, center, center),
-        table.header(
-            [*Method*], [*Min*], [*Max*], [*Median*],
-        ),
-        [Base], [0.7482757], [4,025.185], [3.777617],
-        [BO], [0.7066692], [3,292.298], [2.249176],
-        [RL], [0.6156467], [3,264.563], [2.238741],
-        [NEAT], [0.4796731], [2,211.526], [1.598038],
-    ),
-    caption: [The minimum, maximum, and median objective scores of each method in the 2#super[nd] experiment.]
-) <cohdarl_objective>
-
-The violin plots in @cohdarl_violin as well as the @cohdarl_objective clarify the results of the experiment:
-the baseline wins by a landslide, with the highest median, maximum, and minimum objective scores.
-NEAT loses by a large margin, with the poorest results in all three metrics.
-
-The hypothesis of this work cannot be confirmed by the results of the second experiment.
-The BO method neither improves upon the baseline's performance nor does it perform this task in a reasonable amount of time.
-The RL and NEAT methods are faster than the baseline, but their performance is significantly worse.
-All three NAS methods do not seem to be learning, as their rewards are not increasing over time.
+Lastly, the implementation of other algorithms could also bring improvements.
+The implementations in this work have lead to an existing foundation to build upon, 
+by having examples of three different NAS methods already connected to the harl framework.
+Thus, a good chunk of the implementation work is already done and a new
+NAS method with possibly greater performance could be implemented with less effort.

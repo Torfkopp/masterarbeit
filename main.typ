@@ -15,7 +15,10 @@
 
 #include "template/titlepage.typ"
 
-#include "template/abstract.typ"
+#place(center)[
+  #heading(numbering: none, outlined: false)[Abstract]\
+  #include "template/abstract.typ"
+]
 
 #pagebreak()
 
@@ -52,9 +55,9 @@
 #include "chapters/implementation.typ"
 #include "chapters/experiment.typ"
 
+#include "chapters/results.typ"
 #include "chapters/evaluation.typ"
-#include "chapters/problems.typ"
-// #include "chapters/conclusion.typ"
+#include "chapters/conclusion.typ"
 
 
 

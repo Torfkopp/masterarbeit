@@ -49,10 +49,16 @@ architecture, thus leading to an unsatisfying result.
 Additionally, because the agents are part of a critical infrastructure,
 the choice of architecture has to be reasoned upon.
 
+A solution to the problem may be to automate the choice of the architecture
+by the use of neural architecture search (NAS) algorithms, which have shown its
+worth in the field of machine learning, but mostly for image recognition tasks @elsken2019neural @liu2021survey.
+This approach may be adaptable to agents tasked to stabilise the powergrid
+as part of the adversial resilience learning (ARL) approach.
+
 This leads to this work's hypothesis that 
 choosing a neural network's architecture can be automated with a NAS algorithm, which
 does this task in a way that improves upon the performance of a user picked architecture
-in a reasonable amount of time.
+in a reasonable amount of time in the ARL architecture.
 
 // the choice of the neural network's architecture
 // can be automated with a NAS algorithm, which 

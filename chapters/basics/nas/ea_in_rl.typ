@@ -11,7 +11,7 @@ The algorithms for the latter are put into three categories: Darwinian, like GAs
 @Sigaud focuses on using evolutionary algorithms for policy-search, but also has a section for HPO, in which several different algorithms are mentioned, such as PBT and SEARL.
 
 #figure(
-    image("/images/ea_in_rl.png", width: 70%),
+    image("/images/basics/ea_in_rl.png", width: 70%),
     caption: [How a evolutionary algorithm is used to optimise RL @bai2023evolutionary]
 ) <outer_loop>
 

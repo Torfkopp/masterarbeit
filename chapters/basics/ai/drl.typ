@@ -4,7 +4,7 @@
 One branch of machine learning (@ai_venn) is the previously mentioned Deep Reinforcement Learning (DRL), which combines deep learning with reinforcement learning in order to enhance the capabilities of the learning algorithm.
 
 === Deep Learning <Deep>
-#figure(image("/images/neural_network.png", width: 30%), caption: [A basic representation of a neural network #footnote("https://commons.wikimedia.org/wiki/File:Ann_dependency_(graph).svg")]) <network>
+#figure(image("/images/basics/neural_network.png", width: 30%), caption: [A basic representation of a neural network #footnote("https://commons.wikimedia.org/wiki/File:Ann_dependency_(graph).svg")]) <network>
 
 'Deep Learning' refers to the use of deep neural networks. Neural networks are models based on the human brain with multiple layers of interconnected neurons -- a simple variant is displayed in @network.
 Neurons are either part of the input, hidden, or output layer. The former layer gets the data given to the network, whilst the latter layer outputs the result of the network. The hidden layers are for the calculation of the result and are not seen by the user of the network, thus the name 'hidden'. The amount of layers in a network is referred to as 'depth' of the network, which is also the reason for the name 'deep learning'. \
@@ -12,7 +12,7 @@ Each neuron has at least one input as well as one output connection. The output 
 
 #figure(
   scale(70%, reflow: true)[#neurons],
-  //image("/images/neuron_math.PNG", width: 30%), 
+  //image("/images/basics/neuron_math.PNG", width: 30%), 
   caption: [A representation of single hidden neuron with its inputs]
 ) <neuron_math>
 
@@ -28,7 +28,7 @@ $i_c$ being the output of the previous neuron $I$, \
 $w_c$ being the weight of the connection, \
 and $n$ the amount of connections.
 
-#figure(image(("/images/common_activation_functions.png"), width: 50%), caption: [A selection of common activation functions with their formula #footnote("https://machine-learning.paperspace.com/wiki/activation-function")]) <activation_functions>
+#figure(image(("/images/basics/common_activation_functions.png"), width: 50%), caption: [A selection of common activation functions with their formula #footnote("https://machine-learning.paperspace.com/wiki/activation-function")]) <activation_functions>
 Some common activation functions are displayed in @activation_functions. Activation functions determine the output of a neuron and are used to
 introduce non-linearity to the neural network, thus making it capable of learning non-linear functions. @heaton2011introduction
 

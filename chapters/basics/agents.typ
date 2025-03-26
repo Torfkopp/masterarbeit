@@ -1,7 +1,7 @@
 
 == Agents
 #figure(
-  image("/images/agents.png", width: 70%),
+  image("/images/basics/agents.png", width: 70%),
   caption: [A depiction of an agent with its core functions \ after Russell and Norvig @russell2016artificial #footnote("https://www.researchgate.net/figure/ntelligent-Agents-Russell-and-Norvig-2009_fig2_303545602")]
 )
 
