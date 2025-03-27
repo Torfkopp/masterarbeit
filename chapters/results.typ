@@ -40,7 +40,7 @@ All methods do not seem to learn as the rewards are not increasing over time.
     caption: [The duration of each phase in the 1#super[st] experiment.]
 ) <cigre_duration>
 
-Another information extractable from the graph is each phases duration, which is shown in @cigre_duration.
+Another information extractable from the graph, is each phase's duration, which is shown in @cigre_duration.
 It shows that NEAT was the fastest of the methods, followed by RL, the baseline, and BO.
 The difference between RL's duration and BO's duration is 1:19:41, in other words, 
 takes the BO agent around 60% longer than the RL agent.
@@ -76,7 +76,7 @@ whilst the other three methods all have similar values for these three metrics.
 
 The hypothesis made at the beginning of this thesis is that
 a NAS algorithm can improve upon the performance of a user-picked architecture in a reasonable amount of time in the ARL architecture.
-In regards to this experiment, the hypothesis is true.
+In regard to this experiment, the hypothesis is true.
 All three NAS methods have either similar performance as the baseline in less time (NEAT, RL)
 or a better performance with a slightly higher, but still reasonable, time investment (BO).
 

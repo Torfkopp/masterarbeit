@@ -36,7 +36,7 @@ $ underline(I)_i = sum_(k=1)^n underline(I)_(i k) = sum_(k=1)^n (underline(V)_i 
 The equations can be reformulated to a matrix equation $I = Y dot V$, which constitutes a system of non-linear functions.
 To solve this the Newton-Raphson method is often used -- especially in the case of power flow study.
 The method iteratively refines an approximation:
-$ x_(t+1) = x_t J_t^(-1) [y - f (x_i)] $ @veithpower
+$ x_(t+1) = x_t J_t^(-1) [y - f (x_i)] .$ @veithpower
 
 // === Power Flow Analysis
 

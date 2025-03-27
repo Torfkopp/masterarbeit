@@ -5,7 +5,6 @@
 #set text(region: "GB", font: "Ubuntu", size: 11pt)
 #set heading(numbering: "1.")
 
-#show "ÜBERARBEITEN": set text(fill: red, size: 40pt)
 #show heading: it => {
   set text(font: "Libertinus Serif")
   set block(below: 1em, above: 2em)

@@ -64,7 +64,7 @@ the latest and/or best performing network is used for the normal learning proces
   caption: [Using BO as NAS],
 ) <Bayesian_app>
 
-Lastly, @Bayesian_app shows the cycle with Bayesian Optimisation as the NAS method.
+Lastly, @Bayesian_app shows the cycle with Bayesian optimisation as the NAS method.
 The black box function used for the Bayesian optimisation is made of an encoding of the network's topology.
 The result of the network's run is given to the algorithm to improve and select the next batch of parameters.
 By iterating through this process, the algorithm should be able to find a network with a high reward.

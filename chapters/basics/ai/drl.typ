@@ -35,7 +35,7 @@ introduce non-linearity to the neural network, thus making it capable of learnin
 This way, every neuron calculates its output according to the formula and passes its output to the next neuron. 
 With the output of the last neuron being the result of the network.
 
-It has been shown that "multilayer feedforward networks are universal approximators". This means that any measurable function can be approximated to any desired degree of accuracy. A lack of success is due to inadequate learning, insufficient number of hidden units, or the lack of a deterministic relationship between input and target.@hornik1989multilayer
+It has been shown that "multilayer feed-forward networks are universal approximators". This means that any measurable function can be approximated to any desired degree of accuracy. A lack of success is due to inadequate learning, insufficient number of hidden units, or the lack of a deterministic relationship between input and target.@hornik1989multilayer
 
 === Reinforcement Learning
 
@@ -100,19 +100,19 @@ an agent is said to be able to find the optimal policy.
 There are mainly two different approaches to reinforcement learning: on-policy and off-policy learning.
 On-Policy algorithms evaluate and improve the same policy that is also used to select actions.
 Off-Policy algorithms, however, have two different policies:
-the behaviour policy that is used to select actions and the target policy that is learned and improved.
+the behaviour policy that is used to select actions and the target policy that is learnt and improved.
 The former concept is a straightforward and simple way to learn a neural network policy.
 They also tend to be more stable and due to the simpleness easier to implement and use.
 A major drawback of on-policy algorithms is that they are inclined to be data inefficient,
 because they look at each data point only once. 
 Not being able to reuse data points makes them unable to learn from past experiences, too.
 Off-Policy algorithms, on the other hand, use a memory replay buffer to store and reuse samples.
-This way, data effiency is improved, but often at a cost in stability and ease of use. @gu2017interpolated
+This way, data efficiency is improved, but often at a cost in stability and ease of use. @gu2017interpolated
 
 ==== Policy Gradient Method <policy_gradient>
 
 Policy gradient methods are reinforcement learning approaches that directly optimise the policy.
-They are centered around a parametrised policy $pi_theta$ with parameters $theta$
+They are centred around a parametrised policy $pi_theta$ with parameters $theta$
 that allow the selection of actions $a$ given the state $s$.
 The policy can either be deterministic $a = pi_theta (s)$ or stochastic $a ~ pi_theta (a|s)$.
 
@@ -124,7 +124,7 @@ The policy gradient methods follow the gradient of the expected return
 $ theta_"k+1" = theta_k + alpha_k nabla_theta J(pi_theta)|_(theta=theta_k) $
 
 Policy gradient approaches have the advantages that they often have fewer parameters for representing the optimal policy than value-based methods,
-and they are guaranteed to converge to at least a locally optimal policy. They also can handle continuous states and actions,
+and they are guaranteed to converge to at least a locally optimal policy. They can also handle continuous states and actions,
 and often even imperfect state information. However, they are slow to converge in discrete problems,
 global optima are not attained and they are difficult to use in off-policy settings. @peters2010policy
 
@@ -135,10 +135,10 @@ It defines Q values (or action-values) for a policy $pi$:
 $ Q^pi (x, a) = Re_x(a) + gamma  sum_y P_"xy" [pi(x)] V^pi (y) \, $
 where $theta_k$ denotes the parameters after update $k$ with initial policy $theta_0$ and $alpha_k$ is the learning rate.
 
-Meaning, the Q value is the expected discounted reward for executing action $a$ at state $x$ and following policy $pi$ therafter.
+Meaning, the Q value is the expected discounted reward for executing action $a$ at state $x$ and following policy $pi$ thereafter.
 Theoretically, by using the policy to always take the action with the highest Q value, the Q-learning agent is able to find the optimal policy.
-In Q-learning, the agent has a set of acts that it repeats during so called episodes:
-in the nth episod, the agent:
+In Q-learning, the agent has a set of acts that it repeats during so-called episodes:
+in the nth episode, the agent:
 + observes its current state $x_n$
 + selects and performs an action $a_n$
 + observes the following state $y_n$
@@ -187,7 +187,7 @@ in which $gamma$ is the discount factor determining the agent's horizon, $theta_
 the parameters -- or rather weights -- of the Q-network at iteration $i$ and $theta_i^-$ are the network
 parameters used to compute the target at iteration $i$.
 The target network's weights $theta_i^-$ held fixed between individual updates and are only
-updated with the Q-network's parameters ($theta_i$) at fixed intervalls. @mnih2015human
+updated with the Q-network's parameters ($theta_i$) at fixed intervals. @mnih2015human
 
 ==== Deep Deterministic Policy Gradients
 
@@ -220,7 +220,7 @@ This leads to DDPG finding solutions for Atari games in a factor of 20 fewer ste
 
 ==== TD3
 
-While DDPG can sometimes achieve great performance, it is often brittle with respect to hyperparameters and other types of tuning. A common failure mode for DDPG is that the learned Q-function starts to dramatically overestimate Q-values, which then leads to the policy breaking because it exploits the errors in the Q-function.
+While DDPG can sometimes achieve great performance, it is often brittle with respect to hyperparameters and other types of tuning. A common failure mode for DDPG is that the learnt Q-function starts to dramatically overestimate Q-values, which then leads to the policy breaking because it exploits the errors in the Q-function.
 To address these issues, Twin Delayed Deep Deterministic Policy Gradient (TD3) @fujimoto2018addressing was introduced.
 TD3 applies three modifications to DDPG to increase the stability and performance with consideration of the function approximation error:
 + Clipped Double Q-Learning: TD3 uses two Q-functions to mitigate the overestimation of Q-values. The minimum of the two Q-values is used to compute the target value,
@@ -295,13 +295,13 @@ algo(
 caption: [Pseudocode of the Soft Actor Critic algorithm]
 ) <SAC>
 
-SAC uses a parameterised soft Q-function $Q_theta (s_t, a_t)$ and a tractable policy $pi_phi.alt (a_t|s_t)$, whose
+SAC uses a parametrised soft Q-function $Q_theta (s_t, a_t)$ and a tractable policy $pi_phi.alt (a_t|s_t)$, whose
 parameters are $theta$ and $phi.alt$, respectively.
 The Q-function can be modelled as a neural network and trained to minimise the Bellman residual,
 which is the difference between the left and right side of the Bellman equation,
 thus quantifying how well the Q-function satisfies the Bellman equation:
 $ J_Q (theta) = EE_((s_t, a_t) ~ D) [1/2(Q_theta (s_t, a_t) - (r(s_t, a_t) + gamma EE_(s_(t+1)~p) [V_accent(theta, macron) (s_(t+1))]))^2] \, $
-where the value function is implicitly parameterised through the soft Q-function parameters via
+where the value function is implicitly parametrised through the soft Q-function parameters via
 $V(s_t) = EE_(a_t~pi) [Q(s_t, a_t) - alpha log pi(a_t|s_t)]$, and it can be optimised with stochastic gradients:
 $ accent(nabla,hat)_theta J_Q (theta) = nabla_theta Q_theta (a_t, s_t) (Q_theta (s_t, a_t) - (r(s_t, a_t) + gamma (Q_(accent(theta, macron)) (s_(t+1) , a_(t+1)) - alpha log (pi_phi.alt (a_(t+1)|s_(t+1))))) . $ <stochastic_gradient>
 
@@ -310,7 +310,7 @@ The update uses a target soft Q-function with parameters $accent(theta, macron)$
 //$ pi_"new" = arg min_(pi' in Pi) D_"KL" (pi'(dot.c|s_t) || (exp(1/alpha Q^(pi_"old") (s_t, dot.c)) / (Z^(pi_"old") (s_t)))) \, $
 //$ J_pi(phi.alt) = EE_(s_t~D) [D_("KL")(pi_phi.alt (dot.c|s_t) || (exp(Q_theta (s_t, dot.c))/(Z_theta (s_t)))] $
 
-The policy parameters, however, are learned by directly minimising the expected Kullback-Leibler divergence
+The policy parameters, however, are learnt by directly minimising the expected Kullback-Leibler divergence
 $ J_pi (phi.alt) = EE_(s_t~D) [ EE_(a_t~pi_phi.alt) [alpha log (pi_phi.alt (a_t|s_t)) - Q_theta (s_t, s_t)]] . $
 By reparameterising the policy using a neural network transformation \ $a_t = f_phi.alt (epsilon.alt_t: s_t)$, 
 where $epsilon.alt$ is an input noise vector, sampled from some fixed distribution the actor's function is now:

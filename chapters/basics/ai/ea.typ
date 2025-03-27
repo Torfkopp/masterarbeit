@@ -14,21 +14,21 @@ Each of the individuals is evaluated by using it on the task at hand.
 Based on the quality of its performance, the individual is given a "fitness" score.
 The fittest individuals are selected to reproduce; 
 the offspring is constructed by slightly altering the parents.
-The best performing individuals amongst the offsprings are selected as parents as well, and so forth.
+The best performing individuals amongst the offspring are selected as parents as well, and so forth.
 By repeating this process, each generation should have individuals better adapted to the task than the previous one. @oreillyNeuroevolutionDifferent
 
-Later, the fixture of the topology was not needed anymore and TWEANN (Topology and Weight Evolving Artificial Neural Networks) algorithms were developed.
+Later, the fixture of the topology was not needed any more and TWEANN (Topology and Weight Evolving Artificial Neural Networks) algorithms were developed.
 These algorithms could change the topology of the neural network as well, i.e. by adding a connection during the creation of an offspring.
-The addition of the topolgy made the evolutionary algorithms more flexible and powerful.
+The addition of the topology made the evolutionary algorithms more flexible and powerful.
 
 #figure(
   image("/images/basics/gadiagram.svg"),
-  caption: [A diagram showing the general steps of a evolutionary algorithms #footnote("https://www.strong.io/blog/evolutionary-optimization")]
+  caption: [A diagram showing the general steps of an evolutionary algorithms #footnote("https://www.strong.io/blog/evolutionary-optimization")]
 )
 
 Evolutionary algorithms may be classified into three subcategories, each inspired by different evolutionary theories.
 #heading(outlined: false, bookmarked: false, level: 5, numbering: none)[Darwinian Evolution]
-Darwinian Evolution algorithms are rooted in Charles Darwin's theory of natural selection. These algorithms emphasise survival of the fittest, where individuals are selected based on their fitness, and crossover and mutation create variation. Genetic algorithms (GAs) are a primary example of this approach.
+Darwinian Evolution algorithms are rooted in Charles Darwin's theory of natural selection. These algorithms emphasise the survival of the fittest, where individuals are selected based on their fitness, and crossover and mutation create variation. Genetic algorithms (GAs) are a primary example of this approach.
 
 #heading(outlined: false, bookmarked: false, level: 5, numbering: none)[Lamarckian Evolution]
 Lamarckian Evolution algorithms are based on Jean-Baptiste Lamarck's theory, which posits that traits acquired during an individual's lifetime can be passed to offspring. In EAs, this translates to individuals that can adapt and improve within their lifetime before passing on their enhanced traits, merging the ideas of learning and evolution.
@@ -45,7 +45,7 @@ The distinctive feature of evolutionary algorithms lies in their robustness and 
 NeuroEvolution of Augmenting Topologies (NEAT) is a genetic algorithm for the generation of artificial neural networks. It was developed by Kenneth O. Stanley and Risto Miikkulainen in 2001 @NEAT. 
 The peculiarity of NEAT is that it addresses three major challenges of TWEANNs:
 + Is there a genetic representation that allows disparate topologies to crossover in a meaningful way?
-+ How can topological innovation that needs a few generations to optimize be protected so that it does not disappear from the population prematurely?
++ How can topological innovation that needs a few generations to optimise be protected so that it does not disappear from the population prematurely?
 + How can topologies be minimised throughout evolution without the need for a specially contrived fitness function that measures complexity?
 
 Compared to the traditional genetic algorithms, NEAT has three key differences:
@@ -84,7 +84,7 @@ Whenever a new gene appears through structural mutation, the global innovation n
 Thanks to the innovation number, the algorithm knows which genes match up and represent the same structure during crossovers.
 Genes that do not match are either disjoint or excess, depending on if they occur within the innovation numbers of the other genome.
 If genes are not matching up, they are inherited from the fittest parent or randomly chosen if both parents have the same fitness.
-This way, NEAT can crossover genomes with different topologies without the need for any topological analysis.
+This way, NEAT can do a crossover of genomes with different topologies without the need for any topological analysis.
 
 #heading(outlined: false, bookmarked: false, level: 5, numbering: none)[Protecting Innovation through Speciation]
 Adding a new structure to a genome can be detrimental to its fitness, as the new structure tends to be unoptimised.
@@ -100,10 +100,10 @@ NEAT uses explicit fitness sharing, where organisms in the same species share th
 Species grow or shrink based on whether their average adjusted fitness is above or below the population average:
 $ N'_j = (sum_(i=1)^N_j f_(i j))/overline(f) , $
 where $N_j$ and $N'_j$ are the old and new size of species $j$, $f_(i j)$ is the adjusted fitness of individual $i$ in species $j$, and $overline(f)$ is the mean adjusted fitness of the entire population.
-The best performing $r%$ of each species is randomly mated to generate $N'_j$ offsprings, replacing the entire species.
+The best performing $r%$ of each species is randomly mated to generate $N'_j$ offspring, replacing the entire species.
 
-#heading(outlined: false, bookmarked: false, level: 5, numbering: none)[Minimizing Dimensionality]
-TWEANN algorithms usually start with a population of random topologies to introduce diversity, as new structures often do not survive without protection. However, this diversity may be unnecessary and costly, as random topologies contain untested structures. Optimizing these complex structures increases the search dimensions, potentially wasting effort.
+#heading(outlined: false, bookmarked: false, level: 5, numbering: none)[Minimising Dimensionality]
+TWEANN algorithms usually start with a population of random topologies to introduce diversity, as new structures often do not survive without protection. However, this diversity may be unnecessary and costly, as random topologies contain untested structures. Optimising these complex structures increases the search dimensions, potentially wasting effort.
 Thus, NEAT starts with a uniform population of simple networks with no hidden nodes.
 By using speciation to protect innovation, NEAT can grow new structures incrementally as needed. Only useful structures survive through fitness evaluations, reducing the number of weight dimensions and generations needed to find a solution.
 

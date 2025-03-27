@@ -15,7 +15,7 @@ Since palaestrAI is written in python, the implementation had to be in python as
 The goal of this thesis is to optimise the architecture of the reinforcement learning algorithm.
 Hence, NEAT that has several popular python implementations like neat-python #footnote("https://github.com/CodeReclaimers/neat-python") or pytorch-neat #footnote("https://github.com/ddehueck/pytorch-neat") available was readily chosen -- latter was used as the implementation, because palaestrAI's SAC uses pytorch as well.
 It was picked over its successor HyperNEAT, which improves upon NEAT by using the geometric regularities of the task domain: 
-Even though HyperNEAT performs better for simple fractured problems, it has no improvement for more complicated problems and was slow even on multi-core processors @lowell2011comparison.
+Even though HyperNEAT performs better for simple fractured problems, it has no improvement for more complicated problems and was slow even on multicore processors @lowell2011comparison.
 
 The implementation of the AutoDL-Project and NASLib algorithms as well as ProxylessNAS and Smash were tried.
 Problems arose as these implementations are generally intended for the use in image classification -- NASLib additionally offers implementations for vision, speech recognition, and language processing tasks -- and the used neural nets for this kind of task are not compatible with the
@@ -28,7 +28,7 @@ Despite originally being for image classification as well,
 the minimal RL implementation could be adapted due to its simplicity.
 
 Finally, Bayesian optimisation was chosen over the other hyperparameter optimisation algorithms,
-due to "Bayesian Optimisation" being a household name in the field for many years now
+due to "Bayesian optimisation" being a household name in the field for many years now
 and having a very popular maintained implementation #footnote("https://github.com/bayesian-optimization/BayesianOptimization") that is simple to integrate available.
 
 Thus, three algorithms with different approaches to optimisation were chosen:

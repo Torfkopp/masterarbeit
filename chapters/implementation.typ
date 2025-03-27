@@ -71,7 +71,7 @@ The RL NAS finishes when a set number of networks were created and run through t
 
 == BO
 
-The Bayesian Optimisation NAS method is based on the python 'bayesian-optimization' implementation #footnote[https://github.com/bayesian-optimization/BayesianOptimization].
+The Bayesian optimisation NAS method is based on the python 'bayesian-optimization' implementation #footnote[https://github.com/bayesian-optimization/BayesianOptimization].
 For BO, a function to optimise -- the black box function -- is needed.
 In order to let BO generate a usable network, it has to be encoded in a way that can be used as such a black box function.
 In this use case, the network is encoded as six parameters each reaching from 0 to 256, depicting the number of features in the corresponding layer;

@@ -7,13 +7,13 @@ Machine learning is broadly defined as the study of computer algorithms that imp
 Machine learning encompasses several types of learning paradigms, each suited to different types of problems and data: @goodfellow2016deep
 
 #heading(outlined: false, bookmarked: false, level: 5, numbering: none)[Supervised Learning]
-In supervised learning, the algorithm is trained on a labeled dataset, which means that each training example is paired with an output label. The goal is to learn a mapping from inputs to outputs that can be used to predict the labels of new, unseen data. Common supervised learning algorithms include linear regression, decision trees, and neural networks.
+In supervised learning, the algorithm is trained on a labelled dataset, which means that each training example is paired with an output label. The goal is to learn a mapping from inputs to outputs that can be used to predict the labels of new, unseen data. Common supervised learning algorithms include linear regression, decision trees, and neural networks.
 
 #heading(outlined: false, bookmarked: false, level: 5, numbering: none)[Unsupervised Learning]
-Unsupervised learning deals with unlabeled data. The algorithm's goal is to identify underlying patterns or structures in the data without any specific guidance. Techniques such as clustering (e.g. k-means) and dimensionality reduction (e.g. principal component analysis) are typical examples of unsupervised learning.
+Unsupervised learning deals with unlabelled data. The algorithm's goal is to identify underlying patterns or structures in the data without any specific guidance. Techniques such as clustering (e.g. k-means) and dimensionality reduction (e.g. principal component analysis) are typical examples of unsupervised learning.
 
 #heading(outlined: false, bookmarked: false, level: 5, numbering: none)[Semi-supervised Learning]
-This approach combines both labeled and unlabeled data to improve learning accuracy. It is particularly useful when labeling data is expensive or time-consuming.
+This approach combines both labelled and unlabelled data to improve learning accuracy. It is particularly useful when labeling data is expensive or time-consuming.
 
 #heading(outlined: false, bookmarked: false, level: 5, numbering: none)[Reinforcement Learning]
 In reinforcement learning, an agent interacts with an environment and learns to make decisions by receiving rewards or penalties. The agent's objective is to maximise cumulative rewards over time. This paradigm is often applied in robotics, game playing, and autonomous systems.
@@ -25,12 +25,12 @@ Machine learning's ability to analyse vast amounts of data and extract meaningfu
 The independent and identically distributed (iid) assumption is a fundamental concept in statistics and machine learning. 
 It means that given a set of data ${x_i}$, each of these $x_i$ observations is an independent draw from a fixed probabilistic model.
 Independent means that the probability of observing two values $x_1$ and $x_2$ is the product of the probabilities of observing each value separately. @clauset2011brief
-This assumption simplifies the analysis of data and allows for the application of various statistical methods. In machine learning, the iid assumption is often used in the context of training and testing datasets. When the data points are drawn independently from the same distribution, the iid assumption ensures that the model's performance on the training set generalises well to unseen data.
+This assumption simplifies the analysis of data and allows for the application of various statistical methods. In machine learning, the iid assumption is often used in the context of training and testing datasets. When the data points are drawn independently of the same distribution, the iid assumption ensures that the model's performance on the training set generalises well to unseen data.
 
 === Stochastic Gradient Descent <stochastic_gradient_descent>
 
 Stochastic Gradient Descent (SGD) is a popular optimisation algorithm used in machine learning
-and a modifications of gradient descent.
+and a modification of gradient descent.
 
 To explain gradient descent following example is used:\
 Taking a loss function $cal(l)(accent(y, hat), y)$ that measures the difference between the predicted output $accent(y,hat)$ and the true output $y$ for a given input $x$ and a family $cal(F)$ of functions $f_omega (x)$ parameterised by a weight vector $omega$. 

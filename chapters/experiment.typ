@@ -20,14 +20,14 @@ as well as the number of buses in service together, each with a coefficient of $
 === 2#super[nd] Scenario: CIGRE + COHDARL
 In this scenario, the grid model used is the same as in the first scenario.
 The difference to the first scenario is the usage of COHDARL.
-COHDARL is a distributed heuristic that applies self-organization mechanisms to optimize a global, shared objective.
-It is used to optimize the scheduling of energy resources in virtual power plants and
+COHDARL is a distributed heuristic that applies self-organisation mechanisms to optimise a global, shared objective.
+It is used to optimise the scheduling of energy resources in virtual power plants and
 operates by representing each distributed energy resource as a self-interested agent, allowing both global scheduling objectives and individual local objectives to be efficiently integrated into a distributed coordination paradigm @hinrichs2017distributed.
-Consistent with the usage of COHDARL, the 'defender' agent is given the COHDARL defender objective #footnote("https://gitlab.com/arl-experiments/cohdarl/-/blob/main/src/cohdarl/cohdarl_objective.py"), whose reward is based on the global objective of COHDARL. The objective calculates its reward just like the ArlDefenderObjective, just with the addition of the cohdarl's power objective and a coefficient of $1/4$ for each of the summands.
+Consistent with the usage of COHDARL, the 'defender' agent is given the COHDARL defender objective #footnote("https://gitlab.com/arl-experiments/cohdarl/-/blob/main/src/cohdarl/cohdarl_objective.py"), whose reward is based on the global objective of COHDARL. The objective calculates its reward just like the ArlDefenderObjective, just with the addition of the COHDARLS's power objective and a coefficient of $1/4$ for each of the summands.
 
 == Parameters
 
-The palaestrAI framework allows to create schedules of experiments -- so called phases -- to start directly after one another with one command.
+The palaestrAI framework allows creating schedules of experiments -- so-called phases -- to start directly after one another with one command.
 Thus, an experiment for each of the two scenarios was conducted 
 with the four different methods (Baseline, BO, NEAT, RL) being phases of it.
 
@@ -66,9 +66,9 @@ The RL approach's `INDEX_TO_ACTION`-dictionary was expanded with additional valu
 
 Parameters that were established for this thesis's implementation like NEAT's `runs_per_genome` or RL's `runs_per_network`
 as well as parameters like BO's `N_ITER` that define the algorithm's duration were adapted to the experiment's runtime and scaled accordingly.
-This leads to both the RL-method and the BO-method running for a similar amount of time -- 20.000 steps in total -- // 300.000 or so
+This leads to both the RL-method and the BO-method running for a similar amount of time -- 20,000 steps in total -- // 300.000 or so
 with the remaining steps being run with the network that performed best during the NAS method's runtime.
-The NEAT method runs for 25.000 steps in total, because it also trains the weights and 
+The NEAT method runs for 25,000 steps in total, because it also trains the weights and 
 thus does not need the amount of time to train the best net.
 
 /* Old version with bhv

@@ -23,7 +23,7 @@ is, however, not common.
 @elsken2019neural argues that even though many authors optimised some architectural choices of deep reinforcement learning algorithms, a full study of NAS for RL is still missing.
 One of the works trying to use NAS in DRL is @fu2020auto, which introduces a framework that optimises
 their DRL agent through NAS. The authors argue that their framework outperforms
-manually designed DRL in both test scores and effiecency, potentially opening up new possibilities for automated and fast development of DRL-powered solutions for real-world applications.
+manually designed DRL in both test scores and efficiency, potentially opening up new possibilities for automated and fast development of DRL-powered solutions for real-world applications.
 Another paper that uses NAS to improve DRL is @mazyavkina2021optimizing.
 In which the authors -- similar to the other paper -- report that modern NAS methods successfully find architectures for RL agents that outperform manually selected ones and that this suggests that automated architecture search can be effectively applied to RL problems, potentially leading to improved performance and efficiency in various RL tasks.
 

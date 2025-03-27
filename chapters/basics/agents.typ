@@ -9,7 +9,7 @@ An agent is an autonomous computer system capable of perceiving its environment 
 Agents are designed to operate independently and without human intervention on its decisions and task performance. 
 The functionality of an agent can be split into three parts:
 1. Sensing: The agent perceives the environment through its sensors and thus gathers data from their surroundings.
-2. Processing: The agent processes the gathered information, assesses the state of the environment and then makes a decision based on predefined rules or learned experiences.
+2. Processing: The agent processes the gathered information, assesses the state of the environment and then makes a decision based on predefined rules or learnt experiences.
 3. Acting: By using their actuators, the agent is able to perform the action decided upon in the environment.
 
 A modern example of an agent is the robotic vacuum cleaner, which has a designated area to be cleaned by it -- the environment --, sensors like cameras or infrared sensors, and actuators in form of motors for driving and vacuuming. The robot's objective is to clean its territory, which it achieves independently @wooldridge2009introduction.
