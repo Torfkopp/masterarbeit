@@ -307,9 +307,6 @@ $ accent(nabla,hat)_theta J_Q (theta) = nabla_theta Q_theta (a_t, s_t) (Q_theta 
 
 The update uses a target soft Q-function with parameters $accent(theta, macron)$ obtained as an exponential moving average of soft Q-function weights, which has been shown to stabilise training.
 
-//$ pi_"new" = arg min_(pi' in Pi) D_"KL" (pi'(dot.c|s_t) || (exp(1/alpha Q^(pi_"old") (s_t, dot.c)) / (Z^(pi_"old") (s_t)))) \, $
-//$ J_pi(phi.alt) = EE_(s_t~D) [D_("KL")(pi_phi.alt (dot.c|s_t) || (exp(Q_theta (s_t, dot.c))/(Z_theta (s_t)))] $
-
 The policy parameters, however, are learnt by directly minimising the expected Kullback-Leibler divergence
 $ J_pi (phi.alt) = EE_(s_t~D) [ EE_(a_t~pi_phi.alt) [alpha log (pi_phi.alt (a_t|s_t)) - Q_theta (s_t, s_t)]] . $
 By reparameterising the policy using a neural network transformation \ $a_t = f_phi.alt (epsilon.alt_t: s_t)$, 
@@ -330,26 +327,3 @@ $ J(alpha) = EE_a_(t~pi_t) [-alpha log pi_t (a_t|s_t) - alpha accent(cal(H), mac
 SAC has been shown to be robust and sample efficient enough to perform in real-world robotic tasks like underactuated walking of a quadrupedal robot and
 even outperforms other state-of-art algorithms such as TD3 on several continuous control benchmarks.
 @haarnoja2018soft @haarnoja2018soft2
-
-// #pagebreak()
-// The soft value function (the actor) is trained to minimise the squared residual error
-// $ J_V(psi) = EE_((s_t~cal(D))) [1/2 ( V_Psi (s_t) - EE_(a_t~pi_phi.alt) [Q_theta (s_t, a_t) - log pi_phi.alt (a_t|s_t)])^2 ] \, $<eq>
-// where $cal(D)$ is the distribution of the replay buffer.
-// The gradients of the #link(<eq>)[previous equation] can be estimated with an unbiased estimator
-
-// $ nabla_(psi) J_V (psi) = nabla_(psi) V_(psi) (s_t) (V_(psi) (s_t) - Q_(theta) (s_t, a_t) + log pi_(phi.alt)(a_t|s_t)) \, $
-// where the actions are sampled from the policy and not from the replay buffer.
-// The soft Q-function is trained to minimise the Bellman residual, 
-// which is the difference between the left and right side of the Bellman equation,
-// thus quantifying how well the Q-function satisfies the Bellman equation:
-// $ J_Q(theta) = EE_((s_t, a_t)~cal(D)) [1/2 (Q_theta (s_t, a_t) - accent(Q, hat)(s_t, a_t))^2] \, $
-// with
-// $ accent(Q, hat)(s_t, a_t) = r(s_t, a_t) + gamma EE_(s_(t+1)~p)[V_(accent(Psi, macron))(s_t+1)] \, $
-// which can be optimised with stochastic gradients
-// $  accent(nabla, hat)_(theta) J_Q (theta) =  nabla_( theta) Q_( theta) (a_t, s_t) (Q_( theta) (s_t, a_t) - r(s_t, a_t) -  gamma V_(accent(psi, macron)) (s_(t+1))) \. $
-
-// The update utilises a target value network $V_(accent(psi, macron))$, where $accent(psi, macron)$
-// is an exponentially moving average of the value network weights.
-
-// Finally, the parameters of the policy are learned by minimising the expected Kullback-Leibler divergence:
-// $ J_pi(phi.alt) = EE_(s_t~D) [D_("KL")(pi_phi.alt (dot.c|s_t) || (exp(Q_theta (s_t, dot.c))/(Z_theta (s_t)))] $

@@ -41,26 +41,3 @@ Firstly, BO is data-efficient, requiring fewer evaluations to identify the globa
 Secondly, Bayesian optimisation is well-suited for optimising black-box functions, where the underlying function is unknown or lacks a closed-form expression. This flexibility allows BO to handle a wide range of optimisation problems without requiring derivative information.
 Moreover, Bayesian optimisation is effective for optimising non-convex and multimodal functions, where the objective landscape is complex and contains multiple local optima. The probabilistic nature of the surrogate model enables BO to explore diverse regions of the design space, increasing the likelihood of finding the global maximiser.
 Lastly, Bayesian optimisation leverages the full optimisation history to make informed search decisions. By iteratively updating the surrogate model and acquisition function, BO incorporates past evaluations to guide the search towards promising regions, enhancing the efficiency of the optimisation process. @shahriari2015taking
-
-
-// The key aspects of Bayesian optimisation are:
-// - Objective: Find the global maximizer of an unknown function f(x) over a design space X
-// - Sequential process: It iteratively selects query points, observes noisy outputs, and updates a probabilistic model
-// - Probabilistic surrogate model: Uses a prior distribution to capture beliefs about the objective function's behavior
-// - Acquisition function: Guides the exploration-exploitation trade-off when selecting new query points
-
-// Components of Bayesian optimisation
-// - Probabilistic surrogate model:
-//   - Prior distribution representing beliefs about the objective function
-//   - Observation model describing the data generation mechanism
-// - Acquisition function:
-//   - Evaluates the utility of candidate points for the next evaluation
-//   - Examples include Thompson sampling, probability of improvement, expected improvement, and upper confidence bounds
-// - Sequential updating:
-//   - After each query, the prior is updated to produce a more informative posterior distribution
-
-// Advantages
-// - Data-efficient: Suitable for optimizing functions with costly evaluations
-// - Handles black-box functions: No need for derivative information
-// - Effective for nonconvex and multimodal functions
-// - Leverages full optimisation history to make efficient searches
