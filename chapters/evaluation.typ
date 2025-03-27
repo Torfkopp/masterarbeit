@@ -21,7 +21,7 @@ the results of the second experiment are a clear indicator that parts of the NAS
 Even though the software stack around palaestrAI went through some changes during the time of the experiments,
 it stands to reason that the implementation of the NAS methods into the harl framework may have some underlying problems
 and unintended behaviour.
-The possibility of the NAS methods simply not being able to handle the task at hand should also be taken into consideration.
+The possibility of the NAS methods simply not being able to handle the task at hand (in the time given) should also be taken into consideration.
 Further investigation and experimentation is needed to clarify the reasons for the NAS methods' performance.
 
 The reason for the lower overall reward for NEAT in the second experiment is known;
@@ -45,8 +45,11 @@ The Bayesian optimisation approach to the NAS has big room for improvement, as w
 Currently, the devised black box function is rather simple by having six parameters,
 which represent the amount of features in the layer, and can assume values between 0, in which case no layer is employed, and 256.
 This leads to a network with six layers each having 128 features on average, which is a rather big network.
-By changing the black box function to a more complex one and/or one that is more tuned to the problem at hand,
-the performance of this NAS method is believed to be greatly improved upon.
+The big network could be the reason for the poor performance of the BO method in the second experiment.
+Large networks tend to have longer learning times and take a long time to learn the characteristics of the data @kavzoglu1999determining.
+The baseline, however, uses a two layer network with 48 features each.
+A reduction of the parameters to tune for the Bayesian optimisation (e.g. two parameters to match the baseline's network size),
+may speed up the method and lead to a network with visible learning process.
 
 Other opportunities for enhancement of the NAS methods' performances is the optimisation of the parameters.
 At the moment, the parameters are mostly set to the default values of the implementations;

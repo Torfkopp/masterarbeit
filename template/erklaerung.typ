@@ -7,7 +7,7 @@ Hiermit versichere ich an Eides statt, dass ich diese Arbeit selbstständig verf
 
 #v(20%)
 #emph[Unterschrift]\
-//#image("/images/Unterschrift.png", width: 50%)
+// #image("/images/Unterschrift.png", width: 50%)
 #v(-2em)
 #box(width: 50%, repeat[\_])
 #set text(10pt)
@@ -15,5 +15,3 @@ Hiermit versichere ich an Eides statt, dass ich diese Arbeit selbstständig verf
 #align(left)[
   Mario Fokken | Oldenburg, 20.03.2025
 ]
-
-#pagebreak()
