@@ -5,6 +5,12 @@
 #set text(region: "GB", font: "Ubuntu", size: 11pt)
 #set heading(numbering: "1.")
 
+#set document(
+  title: "Optimisation of Reinforcement Learning using Evolutionary Algorithms",
+  author: "Mario Fokken",
+  date: datetime(day:27, month:3, year:2025)
+)
+
 #show heading: it => {
   set text(font: "Libertinus Serif")
   set block(below: 1em, above: 2em)

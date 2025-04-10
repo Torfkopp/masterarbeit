@@ -53,7 +53,7 @@
     title: title,
     author: authors,
   )
-  set heading(numbering: "1.a")
+  set heading(numbering: "1.")
 
   // PAGE----------------------------------------------
   set page(
@@ -205,7 +205,6 @@
     ],
     footer-descent:0.3*space,
   )
-
 
   // SLIDES STYLING--------------------------------------------------
   // Section Slides
