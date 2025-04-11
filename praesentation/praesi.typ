@@ -14,7 +14,7 @@
 //   smallcaps(it)
 // }
 
-// #show sym.arrow.r.filled: set text(fill: title-color)
+#show sym.arrow.r.filled: set text(fill: title-color)
 #show figure.caption: it => {
   set text(size: 8pt)
   it
@@ -54,8 +54,8 @@
 #context{
   let figures = query(figure)
   for f in figures{
-    if not (repr(f.caption).contains(regex("https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"))) {continue}
-    ref(f.label) + ": " + link(repr(f.caption).find(regex("[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)")))
+    if not (repr(f.caption).contains(regex(https-site-regex))) {continue}
+    ref(f.label) + ": " + link(repr(f.caption).find(regex(site-regex)))
     linebreak()
   } 
 }

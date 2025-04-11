@@ -43,12 +43,10 @@ As mentioned in @machine_learning, 'Reinforcement Learning' is one of the learni
 
 #figure(
   scale(70%, reflow:true)[#feed_loop], 
-  caption: [The feedback-loop of reinforcement learning algorithms)]) <loop>
+  caption: [The feedback-loop of reinforcement learning algorithms]) <loop>
 
 In @loop, the general feedback loop for a reinforcement learning algorithm is illustrated.
 The environment is in a state, which is observed by the agent. The agent then decides upon an action, which is executed in the environment. The environment then transitions to a new state and gives feedback to the agent in the form of a reward. The agent uses this feedback to adjust its policy, which is the strategy it uses to decide upon actions. By adjusting the policy, the agent learns to take actions that maximise the rewards received. @puiutta2020explainable
-
-==== Applications
 
 Reinforcement learning has many applications, such as in robotics @kober2013reinforcement, finance @hambly2023recent, and for this scope most relevant the energy sector, for example as a control system for powergrids @chen2021powernet.
 As shown in @perera2021applications, the application of reinforcement learning can be worthwhile, as
