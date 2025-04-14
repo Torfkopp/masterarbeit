@@ -42,7 +42,6 @@
 #include "sections/basics.typ"
 #include "sections/stack.typ"
 #include "sections/concept.typ"
-#include "sections/implementation.typ"
 #include "sections/experiment.typ"
 #include "sections/conclusion.typ"
 
@@ -55,6 +54,7 @@
   let figures = query(figure)
   for f in figures{
     if not (repr(f.caption).contains(regex(https-site-regex))) {continue}
+    if not f.has("label") {continue}
     ref(f.label) + ": " + link(repr(f.caption).find(regex(site-regex)))
     linebreak()
   } 

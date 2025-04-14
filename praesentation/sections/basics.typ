@@ -72,6 +72,7 @@
 
 
 == Reinforcement Learning
+
 The Bellman principle of optimality is a central part of reinforcement learning:
   #quote(attribution: [Richard Bellman], block: true)["An optimal policy has the property that whatever the initial state and initial decision are, the remaining decisions must constitute an optimal policy with regard to the state resulting from the first decision."]
 
@@ -162,17 +163,21 @@ $ pi^* = arg max_pi EE [sum_(t=0)^infinity gamma^t lr(( r_t + alpha H (pi (dot|s
     #figure(
         image("/images/basics/neat1.png", width: 80%),
         caption: [The scheme NEAT uses for its genomes]
-    )
+    ) <pic6>
     #source[@NEAT]
 ]
 
 == Bayesian optimisation
 
+
 #columns(2)[
     - Strategy for global optimisation of black-box function $f(x)$
-    - Two functions
-        - surrogate function (statistical model): \ best guess of the form of $f(x)$
-        - acquisition function: \ directs the exploration of the space
+    - surrogate function: \ best guess of the form of $f(x)$
+    - acquisition function: \ directs the exploration of the space 
+    #figure(
+            image("bo.png", width: 70%),
+            caption: [BO with 2 evaluations #image-link("https://miro.medium.com/v2/resize:fit:720/format:webp/1*RQ-pAwQ88yC904QppChGPQ.png")]
+        ) <bo_eval_1>
     #colbreak()
     #import "@preview/algo:0.3.6": algo, i, d, comment, code
     #v(-0.8em)
@@ -197,12 +202,12 @@ $ pi^* = arg max_pi EE [sum_(t=0)^infinity gamma^t lr(( r_t + alpha H (pi (dot|s
             $x_(n+1) = arg max_x alpha (x; cal(D)_n)$ #d\
             query objective function to obtain #i\ $y_(n+1) = f(x_(x+1))$ #d\
             augment data set #i\ $cal(D)_n = {cal(D)_n, (x_(n+1), y_(n+1))}$ #d\
-            update statistical model #d\
+            update surrogate function #d\
             end for 
         ]]
     )
 ]
-#source[@shahriari2015taking]
+
 
 == Neural Architecture Search
 
@@ -221,6 +226,6 @@ $ pi^* = arg max_pi EE [sum_(t=0)^infinity gamma^t lr(( r_t + alpha H (pi (dot|s
     #figure(
         image("/images/basics/ea_in_rl.png", width: 100%),
         caption: [How a evolutionary algorithm is used to optimise RL]
-    )
+    ) <big_loop>
     #source[@bai2023evolutionary @liu2021survey @elsken2019neural @fu2020auto @mazyavkina2021optimizing]
 ]
