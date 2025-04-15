@@ -59,3 +59,5 @@
     linebreak()
   } 
 }
+
+#include "sections/summary.typ"

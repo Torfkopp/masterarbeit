@@ -52,10 +52,10 @@ A reduction of the parameters to tune for the Bayesian optimisation (e.g. two pa
 may speed up the method and lead to a network with visible learning process.
 
 Other opportunities for enhancement of the NAS methods' performances is the optimisation of the parameters.
-At the moment, the parameters are mostly set to the default values of the implementations;
+At the moment, the parameters are mostly set to the default values of the implementations.
 Consultation of literature or usage of common practices like computational methods to optimise 
-the parameters for the specific task could lead to a better performance of the NAS methods;
-which is the like the premise of this thesis, just one level further.
+the parameters for the specific task could lead to a better performance of the NAS methods,
+which is like the premise of this thesis, just one level further.
 
 At the moment, the parameters to determine the duration of the NAS methods are either set
 by the user or left to default.

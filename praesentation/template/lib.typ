@@ -1,4 +1,5 @@
 #import "components.typ"
+#import "util.typ"
 
 #let layouts = (
   "small": ("height": 9cm, "space": 1.4cm),
@@ -122,8 +123,10 @@
             } else if count == "number" {
               set align(right + top)
               context {
-                let last = counter(page).final().first()
-                let current = here().page()
+                //let last = counter(page).final().first()
+                let last = util.last-slide-counter.final().first()
+                // let current = here().page()
+                let current = counter(page).get().first()
                 set text(weight: "bold")
                 set text(fill: text-colour)
                 [#current / #last]
@@ -339,6 +342,7 @@
       ] 
     )
   }
+  counter(page).update(0)
 
   // Outline
   if (toc == true) {
@@ -346,5 +350,4 @@
   }
   // Normal Content
   content
-
 }
