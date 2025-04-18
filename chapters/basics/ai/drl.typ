@@ -74,7 +74,7 @@ based upon Richard Bellman's principle of optimality @bellman1954theory:
 That means that the optimal policy consists of always picking the optimal action in a given state.
 
 The Bellman equation can be defined as:
-$ V^pi^*(x) = max_a [Re_x(a) + gamma sum_(y)P_"xy" (a)V^pi^*(y)] $
+$ V^pi^*(x) = max_a [R_x(a) + gamma sum_(y)P_"xy" (a)V^pi^*(y)] $
 
 Where: \
 $x$ is the state, $y$ a possible next state, $a$ an action, $pi$ the policy, \

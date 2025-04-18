@@ -7,7 +7,7 @@
     - An reinforcement learning approach ("Minimal-NAS")
     - Bayesian optimisation
 
-- 1#super[st] experiment showed BO performing better, but may not be meaningful since no agent learned
+- 1#super[st] experiment showed BO performing better, but may not be meaningful since no agent learnt
 - 2#super[nd] experiment showed no NAS method performing, with Baseline only one learning
 
 #sym.arrow.r.filled Hypothesis could not be proven, further research needed

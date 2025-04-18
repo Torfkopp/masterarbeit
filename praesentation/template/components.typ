@@ -6,26 +6,14 @@
     let last = util.last-slide-counter.final().first()
     // let current = here().page()
     let current = counter(page).get().first()
-    let ratio = current / last
+    let ratio = calc.min(1.0, current / last)
     
-    if ratio <= 1.0 {
-      grid(
-        columns: (ratio * 100%, 1fr),
-        rows: height,
-        gutter: 0pt,
-        grid.cell(fill: primary)[], grid.cell(fill: secondary)[],
-      )
-    } else {
-      let app_last = counter(page).final().first() - last
-      let app_current = counter(page).get().first() - last
-      let app_ratio = app_current / app_last
-      grid(
-        columns: (app_ratio * 100%, 1fr),
-        rows: height,
-        gutter: 0pt,
-        grid.cell(fill: primary)[], grid.cell(fill: white)[],
-      )
-    }
+    grid(
+      columns: (ratio * 100%, 1fr),
+      rows: height,
+      gutter: 0pt,
+      grid.cell(fill: primary)[], grid.cell(fill: secondary)[],
+    )
   }
 }
 

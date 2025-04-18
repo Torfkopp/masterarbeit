@@ -45,6 +45,8 @@
 #include "sections/experiment.typ"
 #include "sections/conclusion.typ"
 
+#include "sections/summary.typ"
+
 == Bibliography
 #bibliography("/refs.bib")
 #pagebreak()
@@ -59,5 +61,3 @@
     linebreak()
   } 
 }
-
-#include "sections/summary.typ"

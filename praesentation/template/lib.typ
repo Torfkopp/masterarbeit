@@ -348,6 +348,7 @@
   if (toc == true) {
     outline()
   }
+
   // Normal Content
   content
 }

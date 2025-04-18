@@ -6,7 +6,7 @@
 #columns(2)[
   #[
     - All 3 NAS and baseline were tested
-    - CIGRE Net is used
+    - CIGRE Medium Voltage Net is used
     - NAS algorithm as defender, no attacker
     - Task: keeping the power grid stable
  
@@ -22,7 +22,7 @@
   #colbreak()
   #figure(
     image("/images/cigre.png", width: 80%),
-    caption: [CIGRE Net]
+    caption: [CIGRE Medium Voltage Net]
   ) <exp1>
   #source[@rudion2006cigre]
 ]
@@ -37,7 +37,7 @@
     - BO performs better (median reward 0.717)
 
     #v(1em)
-    #sym.arrow.r.filled Hypothesis true, NAS algorithms can perform better in a reasonable time
+    #sym.arrow.r.filled Hypothesis is true, NAS algorithms can perform better in a reasonable time
   ]
   #colbreak()
   #figure(

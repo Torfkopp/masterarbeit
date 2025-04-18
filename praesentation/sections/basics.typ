@@ -77,7 +77,7 @@ The Bellman principle of optimality is a central part of reinforcement learning:
   #quote(attribution: [Richard Bellman], block: true)["An optimal policy has the property that whatever the initial state and initial decision are, the remaining decisions must constitute an optimal policy with regard to the state resulting from the first decision."]
 
 or, as equation:
-$ V^pi^*(x) = max_a [Re_x(a) + gamma sum_(y)P_"xy" (a)V^pi^*(y)] $ 
+$ V^pi^*(x) = max_a [R_x(a) + gamma sum_(y)P_"xy" (a)V^pi^*(y)] $ 
 
 #sym.arrow.r.filled An optimal policy is achievable by doing the best action in each state
 #source[@bellman1954theory]
@@ -144,6 +144,11 @@ $ pi^* = arg max_pi EE [sum_(t=0)^infinity gamma^t lr(( r_t + alpha H (pi (dot|s
 
 - Upgrades the known TWEANN algorithms with 3 key features
 
+#figure(
+    image("../figures/evolution.png", width: 50%),
+    caption: [Evolution of a network #image-link("https://media.licdn.com/dms/image/v2/D4D12AQG_iTmkH6G2DQ/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1677415406397?e=2147483647&v=beta&t=m_cSmqs-sW0vmuzwOdweeHi0yNPgc-STA8jmjFxVwbk")]
+)
+
 #source[@NEAT]
 
 #pagebreak()
@@ -161,7 +166,7 @@ $ pi^* = arg max_pi EE [sum_(t=0)^infinity gamma^t lr(( r_t + alpha H (pi (dot|s
     ]
     #colbreak()
     #figure(
-        image("/images/basics/neat1.png", width: 80%),
+        image("/images/basics/neat1.png", width: 120%),
         caption: [The scheme NEAT uses for its genomes]
     ) <pic6>
     #source[@NEAT]
@@ -172,10 +177,10 @@ $ pi^* = arg max_pi EE [sum_(t=0)^infinity gamma^t lr(( r_t + alpha H (pi (dot|s
 
 #columns(2)[
     - Strategy for global optimisation of black-box function $f(x)$
-    - surrogate function: \ best guess of the form of $f(x)$
-    - acquisition function: \ directs the exploration of the space 
+    - Surrogate function: \ best guess of the form of $f(x)$
+    - Acquisition function: \ directs the exploration of the space 
     #figure(
-            image("bo.png", width: 70%),
+            image("../figures/bo.png", width: 70%),
             caption: [BO with 2 evaluations #image-link("https://miro.medium.com/v2/resize:fit:720/format:webp/1*RQ-pAwQ88yC904QppChGPQ.png")]
         ) <bo_eval_1>
     #colbreak()
@@ -206,6 +211,7 @@ $ pi^* = arg max_pi EE [sum_(t=0)^infinity gamma^t lr(( r_t + alpha H (pi (dot|s
             end for 
         ]]
     )
+    #source[@shahriari2015taking]
 ]
 
 

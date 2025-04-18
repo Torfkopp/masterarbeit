@@ -3,13 +3,13 @@
 = Concept
 
 == Concept
-#v(-4em)
+#v(-3em)
 #figure(
   scale(50%)[#concept],
   gap: -4em,
   caption: [Adding NAS to the palaestrAI learning cycle]
 ) <concept>
-#v(2em)
+#v(1em)
 - #link(<big_loop>)['Big Loop'] not possible
 #sym.arrow.r.filled Break up NAS algorithm to run within learning loop
 

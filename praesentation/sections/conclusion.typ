@@ -38,7 +38,7 @@
 #quote[a NAS algorithm can improve upon the performance of a user-picked architecture in a reasonable amount of time in the ARL architecture]
 #v(1em)
 - The hypothesis was confirmed in the 1#super[st] experiment, but not in the 2#super[nd]
-- 1#super[st] experiment did not show a learning baseline, thus 2#super[nd] more meaningful
+- 1#super[st] experiment did not show a learning baseline, thus 2#super[nd] is more meaningful
 
 #v(2em)
 #sym.arrow.r.filled The hypothesis cannot be confirmed, \ further research may lead to satisfactory results
