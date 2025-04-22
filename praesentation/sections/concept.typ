@@ -1,6 +1,6 @@
 #import "/images/diagrams.typ": concept, neatnas, rlnas, bonas
 
-= Concept
+= Implementation
 
 == Concept
 #v(-3em)
@@ -75,3 +75,11 @@
       caption: [BO approach]
     ) <bo_concept>
 ]
+
+== UML
+
+#figure(image("../figures/neat_uml.svg"))
+
+#pagebreak()
+
+#figure(image("../figures/bo_uml.svg"))

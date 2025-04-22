@@ -20,6 +20,20 @@
   it
 }
 
+#show outline.entry.where(level: 1): it => {
+  set align(horizon)
+  set text(size: 1.4em)
+  v(16pt, weak: true)
+  (
+    it.indented(
+      strong(it.prefix()), 
+      text(fill: title-color, weight: "bold", it.body()) + 
+      box(width: 1fr, it.fill) +
+      strong(it.page())
+    )
+  )
+}
+
 #show: slides.with(
   title: "Optimisation of Reinforcement Learning using Evolutionary Algorithms", // Required
   subtitle: "Master Thesis",
