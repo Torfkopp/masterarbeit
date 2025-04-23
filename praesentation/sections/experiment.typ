@@ -7,7 +7,7 @@
   #[
     - All 3 NAS and baseline were tested
     - CIGRE Medium Voltage Net is used
-    - NAS algorithm as defender, no attacker
+    - NAS agent as defender, no attacker
     - Task: keeping the power grid stable
  
     1#super[st] Experiment:
@@ -17,7 +17,7 @@
 
     2#super[nd] Experiment:
     - COHDARL Defender Objective
-    - 15,000,000 seconds per episode
+    - 15 Mio. sec. (ca. 174 days) per episode
   ]
   #colbreak()
   #figure(
@@ -69,3 +69,15 @@
     image("/images/results/cohdarl_spear.PNG", width: 100%),
   )
 ]
+
+== Evaluation
+
+- Contrary results: 1#super[st] experiment agrees to hypothesis, 2#super[nd] does not
+
+- In both experiments, the NAS methods do not learn
+  - Baseline also does not learn in 1#super[st] experiment \ #sym.arrow.r.filled Experiment might not work as intended
+  - Either: Implementation of NAS methods not correct or \ task not suitable for NAS methods \ #sym.arrow.r.filled More research needed
+
+- NEAT had a problem in the 2#super[nd] experiment when fitted all actuators
+  - Stopped after first step; due to the unique network structure in NEAT's impl.
+  - Fewer actuators were used, hence the significantly worse performance 

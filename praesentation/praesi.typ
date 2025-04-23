@@ -62,6 +62,10 @@
 #include "sections/summary.typ"
 
 == Bibliography
+#show bibliography: it => {
+  set text(size: 7pt)
+  it
+}
 #bibliography("/refs.bib")
 #pagebreak()
 

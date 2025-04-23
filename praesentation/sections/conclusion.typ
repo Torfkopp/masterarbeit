@@ -2,18 +2,6 @@
 
 = Conclusion
 
-== Evaluation
-
-- Contrary results: 1#super[st] experiment agrees to hypothesis, 2#super[nd] does not
-
-- In both experiments, the NAS methods do not learn
-  - Baseline also does not learn in 1#super[st] experiment \ #sym.arrow.r.filled Experiment might not work as intended
-  - Either: Implementation of NAS methods not correct or \ task not suitable for NAS methods \ #sym.arrow.r.filled More research needed
-
-- NEAT had a problem in the 2#super[nd] experiment when fitted all actuators
-  - Stopped after first step; due to the unique network structure in NEAT's impl.
-  - Fewer actuators were used, hence the significantly worse performance 
-
 == Further Work
 
 - BO approach has big room for improvement

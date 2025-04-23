@@ -39,7 +39,7 @@
 
 #columns(2)[
     #[
-      + RL generates a list of 'actions' \ (e.g. `0: 2, 1: 4, ..., 10: 'ReLu', ...`)
+      + RL generates a set of 'actions' out of\ #(`0: 2, 1: 4, 2: 8, ..., 8: 128,      9: 'tanh', 10: 'ReLu', 11: 'EOS'`)
       + Actions are used to create a network
       + Network is run through cycle, trained 'normally' 
       + Loss and rewards are used as feedback to the RL algorithm

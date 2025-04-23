@@ -2,7 +2,8 @@
 = Introduction
 == Introduction
 
-- Agents in Powergrid use DRL algorithms
+- Agent systems have become more important in powergrids
+- These agents use DRL algorithms
 - Network's architecture has big impact on performance
 
 #v(5%)

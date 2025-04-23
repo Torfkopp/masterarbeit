@@ -1,4 +1,5 @@
 #import "/praesentation/template/util.typ": *
+#import "@preview/touying:0.6.1": *
 = Basics
 
 == Agents
@@ -94,7 +95,7 @@ $ V^pi^*(x) = max_a [R_x(a) + gamma sum_(y)P_"xy" (a)V^pi^*(y)] $
         Two approaches:
         - On-Policy: learning, acting in 1 policy
         - Off-Policy: 1 learning, 1 acting policy
-        #sym.arrow.r.filled Off-Policy is generally more stable and simpler, but cannot reuse data samples, hence less data efficient
+        #sym.arrow.r.filled On-Policy is generally more stable and simpler, but cannot reuse data samples, hence less data efficient
     ]
     #colbreak()
     #import "/images/diagrams.typ": feed_loop
@@ -174,7 +175,6 @@ $ pi^* = arg max_pi EE [sum_(t=0)^infinity gamma^t lr(( r_t + alpha H (pi (dot|s
 
 == Bayesian optimisation
 
-
 #columns(2)[
     - Strategy for global optimisation of black-box function $f(x)$
     - Surrogate function: \ best guess of the form of $f(x)$
@@ -231,7 +231,7 @@ $ pi^* = arg max_pi EE [sum_(t=0)^infinity gamma^t lr(( r_t + alpha H (pi (dot|s
     #colbreak()
     #figure(
         image("/images/basics/ea_in_rl.png", width: 100%),
-        caption: [How a evolutionary algorithm is used to optimise RL]
+        caption: [How an evolutionary algorithm is used to optimise RL]
     ) <big_loop>
     #source[@bai2023evolutionary @liu2021survey @elsken2019neural @fu2020auto @mazyavkina2021optimizing]
 ]
