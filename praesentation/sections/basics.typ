@@ -225,13 +225,13 @@ $ pi^* = arg max_pi EE [sum_(t=0)^infinity gamma^t lr(( r_t + alpha H (pi (dot|s
             - Evolutionary algorithms
             - Gradient-based optimisation
         
-        - NAS were successfully used in several applications and studies
+        - NAS was successfully used in several applications and studies
         - But most NAS applications focus on image classification tasks
     ]
     #colbreak()
     #figure(
         image("/images/basics/ea_in_rl.png", width: 100%),
-        caption: [How an evolutionary algorithm is used to optimise RL]
+        caption: [How an evolutionary algorithm is normally used to optimise RL]
     ) <big_loop>
     #source[@bai2023evolutionary @liu2021survey @elsken2019neural @fu2020auto @mazyavkina2021optimizing]
 ]

@@ -76,7 +76,7 @@
 
 - In both experiments, the NAS methods do not learn
   - Baseline also does not learn in 1#super[st] experiment \ #sym.arrow.r.filled Experiment might not work as intended
-  - Either: Implementation of NAS methods not correct or \ task not suitable for NAS methods \ #sym.arrow.r.filled More research needed
+  - Either implementation of NAS methods is not correct or \ the task is not suitable for NAS methods \ #sym.arrow.r.filled More research needed
 
 - NEAT had a problem in the 2#super[nd] experiment when fitted all actuators
   - Stopped after first step; due to the unique network structure in NEAT's impl.

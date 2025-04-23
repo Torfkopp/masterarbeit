@@ -41,7 +41,7 @@
     #[
       + RL generates a set of 'actions' out of\ #(`0: 2, 1: 4, 2: 8, ..., 8: 128,      9: 'tanh', 10: 'ReLu', 11: 'EOS'`)
       + Actions are used to create a network
-      + Network is run through cycle, trained 'normally' 
+      + Network is run through the cycle and trained 'normally' 
       + Loss and rewards are used as feedback to the RL algorithm
       - Repeats until a set amount of iterations finishes
       - Select best performing network
@@ -62,10 +62,10 @@
       - Black-box function is made of an encoding of the network
         - e.g. a, b, c with bounds (0, 256) representing the hidden layers
 
-      - BO algorithms proposes set of parameters
-      - Parameters are used to create network
-      - Network is run through cycle, trained 'normally'
-      - BO uses reward to improve model
+      + BO algorithms proposes a set of parameters
+      + Parameters are used to create a network
+      + Network is run through the cycle \ and trained 'normally'
+      + BO uses the rewards to improve model
     ]
     #colbreak()
     #v(-2em)
